@@ -13,11 +13,11 @@ config_version=5
 config/name="MJ: 50 Aliens"
 run/main_scene="uid://dnnka5th1gldj"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-WeaponManager="*res://WeaponManager.gd"
+WeaponManager="*res://Scripts/WeaponManager.gd"
 
 [display]
 
@@ -32,7 +32,12 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://playerAttacks/": "red"
+"res://Assets/": "orange",
+"res://Fonts/": "green",
+"res://Scenes/": "blue",
+"res://Scenes/playerAttacks/": "red",
+"res://Scripts/": "pink",
+"res://addons/": "gray"
 }
 
 [input]

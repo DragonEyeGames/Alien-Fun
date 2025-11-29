@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3 uid="uid://bvwdn0ymfscae"]
+
+[ext_resource type="Script" uid="uid://6hesq8wne26" path="res://Scripts/tornado.gd" id="1_7v0nr"]
+[ext_resource type="Texture2D" uid="uid://lquu12syisnw" path="res://Assets/tornado.png" id="2_wpmn3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbhq1"]
+atlas = ExtResource("2_wpmn3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcfkb"]
+atlas = ExtResource("2_wpmn3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a34w"]
+atlas = ExtResource("2_wpmn3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj8fi"]
+atlas = ExtResource("2_wpmn3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xvmj"]
+atlas = ExtResource("2_wpmn3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vku7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbhq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcfkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a34w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj8fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xvmj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tt5nf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_613ct"]
+radius = 359.8055
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8yhts"]
+radius = 119.81653
+
+[node name="Tornado" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_7v0nr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-29.999998, -145)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_vku7g")
+autoplay = "default"
+frame_progress = 0.2422946
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tt5nf")
+
+[node name="Pull" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pull"]
+shape = SubResource("CircleShape2D_613ct")
+
+[node name="Damage" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
+shape = SubResource("CircleShape2D_8yhts")
+
+[connection signal="body_entered" from="Pull" to="." method="_on_pull_body_entered"]
+[connection signal="body_exited" from="Pull" to="." method="_on_pull_body_exited"]
+[connection signal="body_entered" from="Damage" to="." method="_on_area_2d_body_entered"]
