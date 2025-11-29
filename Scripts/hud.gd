@@ -195,16 +195,28 @@ func _on_dead_pressed() -> void:
 
 
 func _on_double_pressed() -> void:
-	visible=false
-	oldPosition=player.global_position
-	player.global_position=Vector2(100000, 100000)
+	get_tree().paused=true
+	$XP.visible=false
+	$DoubleNothing.visible=false
 	var newDouble=doubleScene.instantiate()
 	get_parent().add_child(newDouble)
-	newDouble.global_position=Vector2(100000, 100000)
+	newDouble.global_position=player.global_position
+	for key in spawnController.spawn_table:
+		if(spawnController.spawn_table[key]==0):
+			var path="res://Scenes/enemies/" + str(key) + ".tscn"
+			var toSpawn=load(path).instantiate()
+			newDouble.add_child(toSpawn)
+			newDouble.boss=toSpawn
+			var newOffset:=Vector2.ZERO
+			newOffset.x=randf_range(-1.0, 1.0)
+			newOffset.y=randf_range(-1.0, 1.0)
+			newOffset=newOffset.normalized()
+			newOffset*=1000
+			toSpawn.global_position=player.global_position+newOffset
+			toSpawn.player=player
+			break
 	await get_tree().process_frame
-	print("=== DOUBLE TREE ===")
-	newDouble.print_tree_pretty()
-	newDouble.get_node("HUD").player=player
-	newDouble.get_node("HUD").visible=true
+	player.double=true
+	reparent(newDouble)
 	player.reparent(newDouble)
 	player.z_index+=10

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://dmkysed2sujtw"]
 
-[ext_resource type="PackedScene" uid="uid://b63htkdr5kjxk" path="res://Scenes/hud.tscn" id="4_52vwc"]
+[ext_resource type="Script" uid="uid://ds2amtdoky5f5" path="res://Scenes/double.gd" id="1_g0y6n"]
 [ext_resource type="Texture2D" uid="uid://fbgcmdap5aaq" path="res://Assets/Tilemap/Ground_rocks.png" id="5_2gc6t"]
 [ext_resource type="Texture2D" uid="uid://b4dijtc2rur66" path="res://Assets/Tilemap/Details.png" id="6_yra52"]
 [ext_resource type="Texture2D" uid="uid://beb14fvgkun2b" path="res://Assets/Tilemap/Objects.png" id="7_w12sj"]
@@ -3408,7 +3408,9 @@ sources/2 = SubResource("TileSetAtlasSource_d1ilt")
 size = Vector2(6420.5, 177)
 
 [node name="DoubleIt" type="Node2D"]
+process_mode = 3
 z_index = 20
+script = ExtResource("1_g0y6n")
 
 [node name="newGround" type="TileMapLayer" parent="."]
 z_index = -2
@@ -3443,6 +3445,3 @@ shape = SubResource("RectangleShape2D_6bp64")
 position = Vector2(3034, 163)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_6bp64")
-
-[node name="HUD" parent="." instance=ExtResource("4_52vwc")]
-visible = false

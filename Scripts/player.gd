@@ -8,6 +8,8 @@ var xp=0
 @export var health=100
 var sprite
 
+var double:=false
+
 var dead:=false
 
 func _ready() -> void:
