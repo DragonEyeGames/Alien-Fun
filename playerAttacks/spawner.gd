@@ -20,7 +20,8 @@ func _process(_delta: float) -> void:
 		newProjectile.target=collided.pick_random()
 		var damage=WeaponManager.items[item]["stats"]["damage"]
 		newProjectile.damage=damage
-		await get_tree().create_timer(1/WeaponManager.items[item]["stats"]["count"]).timeout
+		newProjectile.scale=Vector2(WeaponManager.items[item]["stats"]["size"], WeaponManager.items[item]["stats"]["size"])
+		await get_tree().create_timer(1.0/WeaponManager.items[item]["stats"]["count"]).timeout
 		canFire=true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

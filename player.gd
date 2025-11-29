@@ -8,8 +8,9 @@ var xp=0
 @export var health=100
 
 func _physics_process(_delta: float) -> void:
+	var currentSpeed=WeaponManager.items["player"]["stats"]["speed"]*speed
 	velocity=Input.get_vector("Left", "Right", "Up", "Down")
-	velocity*=speed
+	velocity*=currentSpeed
 	move_and_slide()
 	
 func attack(damage):

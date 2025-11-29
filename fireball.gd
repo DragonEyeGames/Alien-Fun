@@ -7,7 +7,7 @@ func _ready() -> void:
 	velocity=target.global_position-global_position
 	look_at(target.global_position)
 	rotation_degrees-=90
-	velocity*=2
+	velocity*=WeaponManager.items["fireball"]["stats"]["speed"]
 	
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
