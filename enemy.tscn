@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c83oifm7np8uy"]
+[gd_scene load_steps=20 format=3 uid="uid://124iuoprje5g"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Slime pack/Tiny_Slime Red.png" id="1_7k104"]
@@ -122,6 +122,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmwgi"]
 radius = 43.56604
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
+radius = 49.0408
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -138,4 +141,13 @@ autoplay = "walkSide"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jmwgi")
 
+[node name="AttackZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+shape = SubResource("CircleShape2D_4gyqm")
+
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
+[connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_exited" from="AttackZone" to="." method="_on_area_2d_body_exited"]
