@@ -236,6 +236,7 @@ grow_vertical = 2
 flat = true
 
 [node name="Weapons" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -288,6 +289,7 @@ offset_right = 698.0
 offset_bottom = 722.0
 
 [node name="Slot" type="Control" parent="Weapons/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
@@ -337,6 +339,7 @@ grow_vertical = 2
 flat = true
 
 [node name="Slot2" type="Control" parent="Weapons/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
@@ -386,6 +389,7 @@ grow_vertical = 2
 flat = true
 
 [node name="Slot3" type="Control" parent="Weapons/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
@@ -434,9 +438,60 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="Slot4" type="Control" parent="Weapons/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.8352941, 0, 0.2509804, 1)
+
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot4"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 687.0
+offset_bottom = 65.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 54
+text = "Tornado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot4"]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 687.0
+offset_bottom = 150.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 41
+text = "Blow them away"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tornado" type="Button" parent="Weapons/VBoxContainer/Slot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot/1" to="." method="_on__pressed"]
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot2/2" to="." method="_on_two_pressed"]
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot3/3" to="." method="_on_three_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot/fireball" to="." method="_on_fireball_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot2/lightning" to="." method="_on_lightning_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot3/fist" to="." method="_on_fist_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Slot4/tornado" to="." method="_on_tornado_pressed"]

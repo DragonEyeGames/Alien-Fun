@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=13 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="PackedScene" uid="uid://bsqgmksc0bna4" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bdtgp3fkcxsqy" path="res://Scripts/spawnController.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://cf32ceetu56je" path="res://Scenes/playerAttacks/tornadoSpawner.tscn" id="2_kry3j"]
 [ext_resource type="PackedScene" uid="uid://124iuoprje5g" path="res://Scenes/enemy.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b63htkdr5kjxk" path="res://Scenes/hud.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://fbgcmdap5aaq" path="res://Assets/Tilemap/Ground_rocks.png" id="6_21xkr"]
@@ -3416,9 +3415,7 @@ collision_layer = 0
 [node name="MainCamera" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-[node name="TornadoSpawner" parent="Player" instance=ExtResource("2_kry3j")]
-
-[node name="ColorRect" type="ColorRect" parent="Player"]
+[node name="Blocker" type="ColorRect" parent="Player"]
 z_index = -1
 offset_left = -1027.0
 offset_top = -585.0

@@ -8,13 +8,13 @@ func _ready() -> void:
 	velocity=target.global_position-global_position
 	velocity=velocity.normalized()*300
 	velocity*=WeaponManager.items["tornado"]["stats"]["speed"]
-	await get_tree().create_timer(WeaponManager.items["tornado"]["stats"]["duration"]).timeout
+	await get_tree().create_timer(WeaponManager.items["tornado"]["stats"]["duration"], false).timeout
 	queue_free()
 	
 func _physics_process(_delta: float) -> void:
 	for enemy in pulling:
 		var toMove=global_position-enemy.global_position
-		toMove=toMove.normalized()*10
+		toMove=toMove.normalized()*8
 		enemy.global_position+=(toMove)
 	move_and_slide()
 

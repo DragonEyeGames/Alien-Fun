@@ -14,10 +14,18 @@ var upgrades=[["", "", "", 0, 0], ["", "", "", 0, 0], ["", "", "", 0, 0]]
 @export var spawnController: Node2D
 
 func _ready() -> void:
+	randomize()
 	bar=$ProgressBar
 	pickWeapon()
 	
 func pickWeapon():
+	var children = $Weapons/VBoxContainer.get_children()
+	children.shuffle()
+	for i in range(3):
+		var child=children[i]
+		child.visible=true
+		$Weapons/VBoxContainer.remove_child(child)
+		$Weapons/VBoxContainer.add_child(child)
 	$Weapons.visible=true
 	get_tree().paused=true
 	
