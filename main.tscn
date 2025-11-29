@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=5 format=3 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="PackedScene" uid="uid://bsqgmksc0bna4" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bdtgp3fkcxsqy" path="res://spawnController.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://xpvqcnr0u5oj" path="res://playerAttacks/fireballSpawner.tscn" id="2_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://ba588pyrmhlhy" path="res://playerAttacks/fistSpawner.tscn" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://124iuoprje5g" path="res://enemy.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b63htkdr5kjxk" path="res://hud.tscn" id="5_lquwl"]
 
@@ -14,10 +12,6 @@ collision_layer = 0
 
 [node name="MainCamera" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
-
-[node name="FistSpawner" parent="Player" instance=ExtResource("3_7mycd")]
-
-[node name="FireballSpawner" parent="Player" instance=ExtResource("2_1bvp3")]
 
 [node name="SpawnController" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("2_0xm2m")

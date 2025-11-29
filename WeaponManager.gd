@@ -2,7 +2,8 @@ extends Node
 
 var items = {
 	"fireball": {
-		"level": 1,
+		"level": 0,
+		"description": "I don't care how big the room is",
 		"stats" : {
 			"damage": 5,
 			"speed": 2,
@@ -23,10 +24,30 @@ var items = {
 		}
 	},
 	"fist": {
-		"level": 1,
+		"level": 0,
+		"description": "Express your anger",
+		"stats" : {
+			"damage": 2,
+			"size": .5,
+			"count": 5,
+		},
+		"upgrades" : {
+			"damage": 1.2,
+			"size": 1.1,
+			"count": 2
+		},
+		"upgrade_type": {
+		"damage": "mul",
+		"size": "mul",
+		"count": "add"
+		}
+	},
+	"lightning": {
+		"level": 0,
+		"description": "Kerzap",
 		"stats" : {
 			"damage": 1,
-			"size": .5,
+			"size": 1,
 			"count": 5,
 		},
 		"upgrades" : {

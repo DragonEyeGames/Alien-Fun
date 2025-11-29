@@ -27,6 +27,10 @@ func _physics_process(_delta: float) -> void:
 	if(not dead):
 		velocity=player.global_position-global_position
 		velocity*=speed
+		if(velocity.x<0):
+			$Icon.flip_h=true
+		else:
+			$Icon.flip_h=false
 		move_and_slide()
 
 func hurt(newDamage):
