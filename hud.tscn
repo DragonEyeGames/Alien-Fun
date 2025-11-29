@@ -94,7 +94,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.35686275, 0.5568628, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot"]
+[node name="title" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -107,7 +107,7 @@ text = "Fireball"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot"]
+[node name="description" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -143,7 +143,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.8862745, 0.5137255, 0, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot2"]
+[node name="title" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot2"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -156,7 +156,7 @@ text = "Lightning"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot2"]
+[node name="description" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot2"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -192,7 +192,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.34872898, 0.6224446, 0.98377293, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot3"]
+[node name="title" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot3"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -205,7 +205,7 @@ text = "Player"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot3"]
+[node name="description" type="RichTextLabel" parent="LevelUp/VBoxContainer/Slot3"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
