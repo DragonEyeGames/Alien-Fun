@@ -31,7 +31,6 @@ func pickWeapon():
 	get_tree().paused=true
 	
 func _process(_delta: float) -> void:
-	$Over.visible=player.dead
 	if($Health.max_value!=WeaponManager.items["player"]["stats"]["health"]):
 		var health = $Health.value + (WeaponManager.items["player"]["stats"]["health"]-$Health.max_value)
 		$Health.max_value=WeaponManager.items["player"]["stats"]["health"]
@@ -43,6 +42,9 @@ func _process(_delta: float) -> void:
 		xpOffset+=bar.max_value
 		bar.max_value+=round((bar.max_value/2))
 		levelUp()
+	if(player.dead and $Over.visible==false):
+		await get_tree().create_timer(2).timeout
+		$Over.visible=true
 		
 func levelUp():
 	spawnController.quantity+=1

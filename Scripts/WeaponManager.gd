@@ -29,7 +29,7 @@ var items = {
 		"stats" : {
 			"damage": 2,
 			"size": .5,
-			"count": 5,
+			"count": 2.5,
 		},
 		"upgrades" : {
 			"damage": 1.2,
@@ -67,7 +67,7 @@ var items = {
 		"stats" : {
 			"damage": 1,
 			"size": 1,
-			"count": 5,
+			"count": 3,
 		},
 		"upgrades" : {
 			"damage": 1.2,

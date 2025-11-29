@@ -96,7 +96,7 @@ script = ExtResource("1_60hxp")
 z_index = 3
 texture_filter = 1
 position = Vector2(-26.199997, 12.399998)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.45, 0.45)
 sprite_frames = SubResource("SpriteFrames_r4sdc")
 autoplay = "default"
 

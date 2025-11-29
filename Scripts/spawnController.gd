@@ -12,10 +12,10 @@ var toIncrease=0
 var spawn_table = {
 	"smallRed": 90,
 	"smallBlue": 5,
-	"smallBlack": 2,
-	"smallGreen": 1,
-	"smallPurple": .6,
-	"smallYellow": .4,
+	"smallBlack": 3,
+	"smallGreen": 2.5,
+	"smallPurple": 2,
+	"smallYellow": 1,
 	"red": 0,
 	"blue": 0,
 	"black": 0,
@@ -31,7 +31,7 @@ func _ready() -> void:
 	spawnWave()
 	
 func updateTable():
-	toIncrease=ceil(wave/10.0)
+	toIncrease=ceil(wave/5.0)
 	if(toIncrease-4>=0):
 		spawn_table[dictLookups[toIncrease-4]]-=1
 		if(spawn_table[dictLookups[toIncrease-4]]<0):
@@ -40,7 +40,8 @@ func updateTable():
 		spawn_table[dictLookups[toIncrease-2]]+=.25
 	if(toIncrease-1>=0):
 		spawn_table[dictLookups[toIncrease-1]]+=.5
-	spawn_table[dictLookups[toIncrease]]+=1
+	if(toIncrease+1<=len(dictLookups)):
+		spawn_table[dictLookups[toIncrease]]+=1
 	if(toIncrease+2<=len(dictLookups)):
 		spawn_table[dictLookups[toIncrease+1]]+=.5
 	if(toIncrease+3>len(dictLookups)):
