@@ -263,6 +263,7 @@ grow_vertical = 2
 flat = true
 
 [node name="DoubleNothing" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -807,6 +808,212 @@ text = "Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BossDefeated" type="Control" parent="."]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 636.0
+offset_top = 380.0
+offset_right = 1346.0
+offset_bottom = 871.0
+
+[node name="ColorRect2" type="ColorRect" parent="BossDefeated"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BossDefeated"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.99607843, 0.99607843, 0.85490197, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BossDefeated"]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 716.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 100
+text = "Boss defeated"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="BossDefeated"]
+z_index = 1
+layout_mode = 0
+offset_left = 57.0
+offset_top = 348.0
+offset_right = 659.0
+offset_bottom = 448.0
+mouse_filter = 2
+color = Color(0.20299175, 0.4889968, 3.85046e-07, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="BossDefeated/ColorRect3"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 604.0
+offset_bottom = 102.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="beaten" type="Button" parent="BossDefeated/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BossDefeated/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 84
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="BossDefeated"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 99.0
+offset_right = 693.0
+offset_bottom = 334.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 50
+text = "You successfully beat the boss. You now get double the rewards!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lost" type="Control" parent="."]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 596.0
+offset_top = 455.0
+offset_right = 1306.0
+offset_bottom = 946.0
+
+[node name="ColorRect2" type="ColorRect" parent="Lost"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Lost"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.99607843, 0.99607843, 0.85490197, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Lost"]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 716.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 100
+text = "You Died"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="Lost"]
+z_index = 1
+layout_mode = 0
+offset_left = 57.0
+offset_top = 348.0
+offset_right = 659.0
+offset_bottom = 448.0
+mouse_filter = 2
+color = Color(0.57254905, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Lost/ColorRect3"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 604.0
+offset_bottom = 102.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dead" type="Button" parent="Lost/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Lost/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 84
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Lost"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 99.0
+offset_right = 693.0
+offset_bottom = 334.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 50
+text = "You tried your best but in the end you couldn't beat the boss. You get no rewards for this level up."
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot/1" to="." method="_on__pressed"]
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot2/2" to="." method="_on_two_pressed"]
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot3/3" to="." method="_on_three_pressed"]
@@ -818,3 +1025,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot4/tornado" to="." method="_on_tornado_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot5/halo" to="." method="_on_halo_pressed"]
 [connection signal="pressed" from="Over/ColorRect3/Dead" to="." method="_on_dead_pressed"]
+[connection signal="pressed" from="BossDefeated/ColorRect3/beaten" to="." method="_on_beaten_pressed"]
+[connection signal="pressed" from="Lost/ColorRect3/Dead" to="." method="_on_dead_pressed"]

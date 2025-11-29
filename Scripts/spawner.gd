@@ -10,7 +10,7 @@ var collided=[]
 var canFire=true
 
 func _process(_delta: float) -> void:
-	if(not get_parent().double):
+	if(not WeaponManager.double):
 		if(len(collided)>=1):
 			for enemy in collided:
 				if(enemy.health<=0):
@@ -30,7 +30,10 @@ func _process(_delta: float) -> void:
 			await get_tree().create_timer(1.0/WeaponManager.items[item]["stats"]["count"]).timeout
 			canFire=true
 	else:
-		if(canFire and get_parent().get_parent().boss!=null):
+		for thingy in collided:
+			if(not thingy.boss):
+				collided.erase(thingy)
+		if(len(collided)>=1 and canFire and get_parent().get_parent().boss!=null):
 			canFire=false
 			var newProjectile=projectile.instantiate()
 			get_parent().get_parent().add_child(newProjectile)

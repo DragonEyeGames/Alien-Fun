@@ -195,11 +195,15 @@ func _on_dead_pressed() -> void:
 
 
 func _on_double_pressed() -> void:
-	get_tree().paused=true
+	player.get_node("MainCamera").position_smoothing_enabled=false
+	get_tree().paused=false
 	$XP.visible=false
 	$DoubleNothing.visible=false
+	oldPosition=player.global_position
 	var newDouble=doubleScene.instantiate()
 	get_parent().add_child(newDouble)
+	spawnController.process_mode=Node.PROCESS_MODE_DISABLED
+	WeaponManager.double=true
 	newDouble.global_position=player.global_position
 	for key in spawnController.spawn_table:
 		if(spawnController.spawn_table[key]==0):
@@ -214,9 +218,35 @@ func _on_double_pressed() -> void:
 			newOffset*=1000
 			toSpawn.global_position=player.global_position+newOffset
 			toSpawn.player=player
+			toSpawn.boss=true
+			toSpawn.hud=self
 			break
 	await get_tree().process_frame
-	player.double=true
 	reparent(newDouble)
 	player.reparent(newDouble)
 	player.z_index+=10
+	await get_tree().process_frame
+	player.get_node("MainCamera").position_smoothing_enabled=true
+
+func bossDefeated():
+	await get_tree().create_timer(1).timeout
+	$BossDefeated.visible=true
+
+
+func _on_beaten_pressed() -> void:
+	spawnController.process_mode=Node.PROCESS_MODE_INHERIT
+	upgrade()
+	upgrade()
+	var double=get_parent()
+	reparent(double.get_parent())
+	player.reparent(get_parent())
+	double.queue_free()
+	WeaponManager.double=false
+	player.z_index-=10
+	$XP.visible=true
+	$BossDefeated.visible=false
+	player.global_position=oldPosition
+	player.get_node("MainCamera").position_smoothing_enabled=false
+	await get_tree().process_frame
+	await get_tree().process_frame
+	player.get_node("MainCamera").position_smoothing_enabled=true

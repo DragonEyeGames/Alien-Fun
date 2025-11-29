@@ -8,12 +8,17 @@ class_name Enemy
 @export var health = 2
 var attacking:=[]
 var canAttack=true
+@export var boss:=false
+
+var hud
 
 const xp = preload("res://scenes/xp.tscn")
 
 var dead=false
 
 func _process(_delta: float) -> void:
+	if(WeaponManager.double and not boss):
+		return
 	if(not dead):
 		if(canAttack and len(attacking)>=1):
 			canAttack=false
@@ -24,6 +29,8 @@ func _process(_delta: float) -> void:
 			canAttack=true
 
 func _physics_process(_delta: float) -> void:
+	if(WeaponManager.double and not boss):
+		return
 	if(not dead):
 		velocity=player.global_position-global_position
 		velocity*=speed
@@ -45,9 +52,12 @@ func die():
 
 
 func _on_icon_animation_finished() -> void:
-	var newXP=xp.instantiate()
-	get_parent().add_child(newXP)
-	newXP.global_position=global_position
+	if(boss==false):
+		var newXP=xp.instantiate()
+		get_parent().add_child(newXP)
+		newXP.global_position=global_position
+	else:
+		hud.bossDefeated()
 	queue_free()
 
 

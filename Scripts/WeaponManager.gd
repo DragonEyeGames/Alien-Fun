@@ -1,5 +1,7 @@
 extends Node
 
+var double=false
+
 var items = {
 	"fireball": {
 		"level": 0,

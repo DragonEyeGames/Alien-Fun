@@ -49,6 +49,8 @@ func updateTable():
 	print(spawn_table)
 	
 func spawnWave():
+	while WeaponManager.double:
+		await get_tree().process_frame
 	wave+=1
 	updateTable()
 	for spawning in floor(quantity):
