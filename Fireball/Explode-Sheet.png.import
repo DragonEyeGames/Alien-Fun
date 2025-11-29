@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d37a8h2cg3qhq"
-path="res://.godot/imported/Projectile_slime.png-4ba0de1ef75093f96b532815c475689f.ctex"
+uid="uid://ihgxxounbkbm"
+path="res://.godot/imported/Explode-Sheet.png-5dbe6ec054beb5a91812617544c9ca08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Slime pack/Projectile_slime.png"
-dest_files=["res://.godot/imported/Projectile_slime.png-4ba0de1ef75093f96b532815c475689f.ctex"]
+source_file="res://Fireball/Explode-Sheet.png"
+dest_files=["res://.godot/imported/Explode-Sheet.png-5dbe6ec054beb5a91812617544c9ca08.ctex"]
 
 [params]
 
