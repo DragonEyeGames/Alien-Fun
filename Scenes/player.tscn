@@ -1,7 +1,27 @@
-[gd_scene load_steps=37 format=3 uid="uid://bsqgmksc0bna4"]
+[gd_scene load_steps=52 format=3 uid="uid://bsqgmksc0bna4"]
 
 [ext_resource type="Script" uid="uid://cs7lf8qf4fj87" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://b13qf42fhbpr2" path="res://Assets/player/Moviment.png" id="2_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://d2u2l723ep8ot" path="res://Assets/ghost/E1001.png" id="3_7dp3o"]
+[ext_resource type="Texture2D" uid="uid://c3cw0t5fuscri" path="res://Assets/ghost/E1002.png" id="4_h4iuc"]
+[ext_resource type="Texture2D" uid="uid://cal2my70xktv2" path="res://Assets/ghost/E1003.png" id="5_fd4e3"]
+[ext_resource type="Texture2D" uid="uid://cx3ttueqt050n" path="res://Assets/ghost/E1004.png" id="6_qqcod"]
+[ext_resource type="Texture2D" uid="uid://hxt27m6esp7u" path="res://Assets/ghost/E1005.png" id="7_igrcy"]
+[ext_resource type="Texture2D" uid="uid://bc5hglcuilgxo" path="res://Assets/ghost/E1006.png" id="8_fs7ks"]
+[ext_resource type="Texture2D" uid="uid://d1k7ibtisqdf6" path="res://Assets/ghost/E1007.png" id="9_l6n3p"]
+[ext_resource type="Texture2D" uid="uid://dy45iqegfh8d2" path="res://Assets/ghost/E1008.png" id="10_olqyp"]
+[ext_resource type="Texture2D" uid="uid://civ6v0gqh3pmd" path="res://Assets/ghost/E1009.png" id="11_wpjfl"]
+[ext_resource type="Texture2D" uid="uid://c20i4axpuf8ko" path="res://Assets/ghost/E1010.png" id="12_bi64h"]
+[ext_resource type="Texture2D" uid="uid://crq8ob05g3120" path="res://Assets/ghost/E1011.png" id="13_2ijsl"]
+[ext_resource type="Texture2D" uid="uid://chydnaulrjwxf" path="res://Assets/ghost/E1012.png" id="14_p1odr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wohnl"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(0, 288, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_36dho"]
+atlas = ExtResource("2_cvnsp")
+region = Rect2(48, 288, 48, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -127,6 +147,17 @@ region = Rect2(240, 128, 48, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wohnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_36dho")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6t5aa")
 }, {
 "duration": 1.0,
@@ -250,6 +281,61 @@ radius = 251.19913
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3pqv"]
 radius = 77.87811
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gysh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7dp3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_h4iuc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fd4e3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qqcod")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_igrcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fs7ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_l6n3p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_olqyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wpjfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bi64h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2ijsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_p1odr")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"rise",
+"speed": 10.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
 speed = 350.0
@@ -258,9 +344,10 @@ speed = 350.0
 texture_filter = 1
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_olqyp")
-animation = &"walkRight"
+animation = &"dead"
 autoplay = "idle"
-frame_progress = 0.5634694
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0xm2m")
@@ -279,3 +366,14 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtzone"]
 shape = SubResource("CircleShape2D_i3pqv")
+
+[node name="Ghost" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, -44)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_0gysh")
+animation = &"rise"
+autoplay = "empty"
+frame = 12
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]

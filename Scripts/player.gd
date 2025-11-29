@@ -8,10 +8,14 @@ var xp=0
 @export var health=100
 var sprite
 
+var dead:=false
+
 func _ready() -> void:
 	sprite=$Sprite2D
 
 func _physics_process(_delta: float) -> void:
+	if(dead):
+		return
 	var currentSpeed=WeaponManager.items["player"]["stats"]["speed"]*speed
 	velocity=Input.get_vector("Left", "Right", "Up", "Down")
 	velocity*=currentSpeed
@@ -37,8 +41,20 @@ func _physics_process(_delta: float) -> void:
 			sprite.play("walk")
 	
 func attack(damage):
+	if(dead):
+		return
 	damage*=2
 	health-=damage
 	if(health<=0):
-		visible=false
 		get_tree().paused=true
+		dead=true
+		process_mode=Node.PROCESS_MODE_ALWAYS
+		for child in get_children():
+			if(child is Spawner):
+				child.queue_free()
+		$Sprite2D.play("dead")
+
+
+func _on_sprite_2d_animation_finished() -> void:
+	sprite.visible=false
+	$Ghost.play("rise")

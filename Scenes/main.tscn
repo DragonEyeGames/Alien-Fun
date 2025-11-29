@@ -3410,13 +3410,14 @@ sources/2 = SubResource("TileSetAtlasSource_d1ilt")
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+z_index = 1
 collision_layer = 0
 
 [node name="MainCamera" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
 [node name="Blocker" type="ColorRect" parent="Player"]
-z_index = -1
+z_index = -2
 offset_left = -1164.0
 offset_top = -710.0
 offset_right = 887.0

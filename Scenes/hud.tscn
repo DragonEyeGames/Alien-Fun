@@ -511,6 +511,96 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="Over" type="Control" parent="."]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 596.0
+offset_top = 455.0
+offset_right = 1306.0
+offset_bottom = 786.0
+
+[node name="ColorRect2" type="ColorRect" parent="Over"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -4.0
+offset_right = 7.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Over"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.99607843, 0.99607843, 0.85490197, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Over"]
+layout_mode = 0
+offset_top = -4.0
+offset_right = 716.0
+offset_bottom = 112.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 100
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect3" type="ColorRect" parent="Over"]
+z_index = 1
+layout_mode = 0
+offset_left = 55.0
+offset_top = 177.0
+offset_right = 657.0
+offset_bottom = 277.0
+mouse_filter = 2
+color = Color(0.6589113, 1.2273341e-06, 9.62615e-08, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Over/ColorRect3"]
+z_index = -1
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 604.0
+offset_bottom = 102.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Dead" type="Button" parent="Over/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Over/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 84
+text = "Restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot/1" to="." method="_on__pressed"]
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot2/2" to="." method="_on_two_pressed"]
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot3/3" to="." method="_on_three_pressed"]
@@ -518,3 +608,4 @@ flat = true
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot2/lightning" to="." method="_on_lightning_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot3/fist" to="." method="_on_fist_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot4/tornado" to="." method="_on_tornado_pressed"]
+[connection signal="pressed" from="Over/ColorRect3/Dead" to="." method="_on_dead_pressed"]
