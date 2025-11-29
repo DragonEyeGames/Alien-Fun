@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnnka5th1gldj"]
+
+[ext_resource type="PackedScene" uid="uid://bsqgmksc0bna4" path="res://player.tscn" id="1_ig7tw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+speed = 200
+
+[node name="MainCamera" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
