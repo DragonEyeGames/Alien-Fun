@@ -916,10 +916,10 @@ visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
-offset_left = 596.0
-offset_top = 455.0
-offset_right = 1306.0
-offset_bottom = 946.0
+offset_left = 636.0
+offset_top = 382.0
+offset_right = 1346.0
+offset_bottom = 873.0
 
 [node name="ColorRect2" type="ColorRect" parent="Lost"]
 z_index = -1
@@ -977,7 +977,7 @@ offset_bottom = 102.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Dead" type="Button" parent="Lost/ColorRect3"]
+[node name="defeated" type="Button" parent="Lost/ColorRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1026,4 +1026,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot5/halo" to="." method="_on_halo_pressed"]
 [connection signal="pressed" from="Over/ColorRect3/Dead" to="." method="_on_dead_pressed"]
 [connection signal="pressed" from="BossDefeated/ColorRect3/beaten" to="." method="_on_beaten_pressed"]
-[connection signal="pressed" from="Lost/ColorRect3/Dead" to="." method="_on_dead_pressed"]
+[connection signal="pressed" from="Lost/ColorRect3/defeated" to="." method="_on_defeated_pressed"]

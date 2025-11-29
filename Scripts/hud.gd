@@ -16,7 +16,10 @@ var upgrades=[["", "", "", 0, 0], ["", "", "", 0, 0], ["", "", "", 0, 0]]
 @export var doubleScene: PackedScene
 var selected:=0
 
+var bossType
+
 var oldPosition:Vector2 = Vector2(0, 0)
+var oldHealth:=0.0
 
 func _ready() -> void:
 	randomize()
@@ -195,6 +198,7 @@ func _on_dead_pressed() -> void:
 
 
 func _on_double_pressed() -> void:
+	oldHealth=player.health
 	player.get_node("MainCamera").position_smoothing_enabled=false
 	get_tree().paused=false
 	$XP.visible=false
@@ -208,6 +212,7 @@ func _on_double_pressed() -> void:
 	for key in spawnController.spawn_table:
 		if(spawnController.spawn_table[key]==0):
 			var path="res://Scenes/enemies/" + str(key) + ".tscn"
+			bossType=key
 			var toSpawn=load(path).instantiate()
 			newDouble.add_child(toSpawn)
 			newDouble.boss=toSpawn
@@ -234,6 +239,7 @@ func bossDefeated():
 
 
 func _on_beaten_pressed() -> void:
+	player.health=oldHealth
 	spawnController.process_mode=Node.PROCESS_MODE_INHERIT
 	upgrade()
 	upgrade()
@@ -245,6 +251,30 @@ func _on_beaten_pressed() -> void:
 	player.z_index-=10
 	$XP.visible=true
 	$BossDefeated.visible=false
+	spawnController.spawn_table[bossType]+=.05
+	player.global_position=oldPosition
+	player.get_node("MainCamera").position_smoothing_enabled=false
+	await get_tree().process_frame
+	await get_tree().process_frame
+	player.get_node("MainCamera").position_smoothing_enabled=true
+
+func playerDied():
+	await get_tree().create_timer(1).timeout
+	$Lost.visible=true
+
+
+func _on_defeated_pressed() -> void:
+	player.dead=false
+	player.health=oldHealth
+	spawnController.process_mode=Node.PROCESS_MODE_INHERIT
+	var double=get_parent()
+	reparent(double.get_parent())
+	player.reparent(get_parent())
+	double.queue_free()
+	WeaponManager.double=false
+	player.z_index-=10
+	$XP.visible=true
+	$Lost.visible=false
 	player.global_position=oldPosition
 	player.get_node("MainCamera").position_smoothing_enabled=false
 	await get_tree().process_frame

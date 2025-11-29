@@ -9,7 +9,7 @@ var xp=0
 var sprite
 
 var double:=false
-
+@export var hud: CanvasLayer
 var dead:=false
 
 func _ready() -> void:
@@ -48,13 +48,17 @@ func attack(damage):
 	damage*=2
 	health-=damage
 	if(health<=0):
-		get_tree().paused=true
-		dead=true
-		process_mode=Node.PROCESS_MODE_ALWAYS
-		for child in get_children():
-			if(child is Spawner):
-				child.queue_free()
-		$Sprite2D.play("dead")
+		if(!WeaponManager.double):
+			get_tree().paused=true
+			dead=true
+			process_mode=Node.PROCESS_MODE_ALWAYS
+			for child in get_children():
+				if(child is Spawner):
+					child.queue_free()
+			$Sprite2D.play("dead")
+		else:
+			hud.playerDied()
+			dead=true
 
 
 func _on_sprite_2d_animation_finished() -> void:
