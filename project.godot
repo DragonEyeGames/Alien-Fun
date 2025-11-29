@@ -35,6 +35,7 @@ folder_colors={
 "res://Assets/": "orange",
 "res://Fonts/": "green",
 "res://Scenes/": "blue",
+"res://Scenes/enemies/": "purple",
 "res://Scenes/playerAttacks/": "red",
 "res://Scripts/": "pink",
 "res://addons/": "gray"

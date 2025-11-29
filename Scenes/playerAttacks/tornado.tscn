@@ -49,7 +49,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_tt5nf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_613ct"]
-radius = 359.8055
+radius = 248.16325
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8yhts"]
 radius = 119.81653
@@ -64,7 +64,7 @@ position = Vector2(-29.999998, -145)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_vku7g")
 autoplay = "default"
-frame_progress = 0.2422946
+frame_progress = 0.9456837
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tt5nf")

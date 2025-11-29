@@ -75,7 +75,7 @@ var items = {
 			"damage": 1.2,
 			"size": 1.1,
 			"speed": 1.2,
-			"count": 1,
+			"count": .5,
 			"duration": 1.2
 		},
 		"upgrade_type": {

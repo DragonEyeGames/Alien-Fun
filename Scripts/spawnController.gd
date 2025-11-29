@@ -5,15 +5,17 @@ var quantity:=3.0
 var random=2
 var wave=0
 
+var toIncrease=0
+
 @export var enemies:Array[PackedScene] = []
 
 var spawn_table = {
-	"smallRed": 50,
-	"smallBlue": 30,
-	"smallBlack": 10,
-	"smallGreen": 5,
-	"smallPurple": 3,
-	"smallYellow": 1,
+	"smallRed": 90,
+	"smallBlue": 5,
+	"smallBlack": 2,
+	"smallGreen": 1,
+	"smallPurple": .6,
+	"smallYellow": .4,
 	"red": 0,
 	"blue": 0,
 	"black": 0,
@@ -22,35 +24,44 @@ var spawn_table = {
 	"yellow": 0
 }
 
+var dictLookups = ["smallRed", "smallBlue", "smallBlack", "smallGreen", "smallPurple", "smallYellow", "red", "blue", "black", "green", "purple", "yellow"]
+
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	spawnWave()
 	
 func updateTable():
-	var item=0.0
-	for key in spawn_table.keys():
-		spawn_table[key]+=wave*(item+1)/50.0
-		item+=1.0
+	toIncrease=ceil(wave/10.0)
+	if(toIncrease-4>=0):
+		spawn_table[dictLookups[toIncrease-4]]-=1
+		if(spawn_table[dictLookups[toIncrease-4]]<0):
+			spawn_table[dictLookups[toIncrease-4]]=0
+	if(toIncrease-2>=0):
+		spawn_table[dictLookups[toIncrease-2]]+=.25
+	if(toIncrease-1>=0):
+		spawn_table[dictLookups[toIncrease-1]]+=.5
+	spawn_table[dictLookups[toIncrease]]+=1
+	if(toIncrease+2<=len(dictLookups)):
+		spawn_table[dictLookups[toIncrease+1]]+=.5
+	if(toIncrease+3>len(dictLookups)):
+		spawn_table[dictLookups[toIncrease+2]]+=.25
 	print(spawn_table)
 	
 func spawnWave():
 	wave+=1
 	updateTable()
 	for spawning in floor(quantity):
-		print(pickSpawn())
-		var toSpawn=enemies.pick_random().instantiate()
+		var path="res://Scenes/enemies/" + str(pickSpawn()) + ".tscn"
+		var toSpawn=load(path).instantiate()
 		get_parent().add_child(toSpawn)
 		toSpawn.player=player
 		var offset:Vector2 = Vector2(0, 0)
-		offset.x=randf_range(0.0, 1.0)
-		offset.y= 1.0 - offset.x
+		offset.x=randf_range(-1.0, 1.0)
+		offset.y=randf_range(-1.0, 1.0)
+		offset=offset.normalized()
 		offset*=1000
-		if(randi_range(1, 2)==1):
-			offset.x=-offset.x
-		if(randi_range(1, 2)==1):
-			offset.y=-offset.y
 		toSpawn.global_position=player.global_position+offset
-	quantity+=.25
+	quantity*=1.1
 	await get_tree().create_timer(4, false).timeout
 	spawnWave()
 

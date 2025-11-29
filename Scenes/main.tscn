@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bsqgmksc0bna4" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bdtgp3fkcxsqy" path="res://Scripts/spawnController.gd" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://124iuoprje5g" path="res://Scenes/enemy.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://124iuoprje5g" path="res://Scenes/enemies/smallRed.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b63htkdr5kjxk" path="res://Scenes/hud.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://fbgcmdap5aaq" path="res://Assets/Tilemap/Ground_rocks.png" id="6_21xkr"]
 [ext_resource type="Texture2D" uid="uid://b4dijtc2rur66" path="res://Assets/Tilemap/Details.png" id="7_344ge"]
@@ -3417,10 +3417,11 @@ position_smoothing_enabled = true
 
 [node name="Blocker" type="ColorRect" parent="Player"]
 z_index = -1
-offset_left = -1027.0
-offset_top = -585.0
-offset_right = 1024.0
-offset_bottom = 585.0
+offset_left = -1164.0
+offset_top = -710.0
+offset_right = 887.0
+offset_bottom = 460.0
+scale = Vector2(1.225, 1.225)
 mouse_filter = 2
 color = Color(0, 0.105882354, 0, 0.28235295)
 
