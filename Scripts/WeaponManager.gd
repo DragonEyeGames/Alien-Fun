@@ -5,7 +5,7 @@ var items = {
 		"level": 0,
 		"description": "I don't care how big the room is",
 		"stats" : {
-			"damage": 5,
+			"damage": 10,
 			"speed": 2,
 			"size": 1.0,
 			"count": 1

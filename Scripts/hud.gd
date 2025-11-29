@@ -13,6 +13,10 @@ var upgrades=[["", "", "", 0, 0], ["", "", "", 0, 0], ["", "", "", 0, 0]]
 @export var dustSpawner: PackedScene
 
 @export var spawnController: Node2D
+@export var doubleScene: PackedScene
+var selected:=0
+
+var oldPosition:Vector2 = Vector2(0, 0)
 
 func _ready() -> void:
 	randomize()
@@ -31,6 +35,8 @@ func pickWeapon():
 	get_tree().paused=true
 	
 func _process(_delta: float) -> void:
+	if(player==null):
+		return
 	if($Health.max_value!=WeaponManager.items["player"]["stats"]["health"]):
 		var health = $Health.value + (WeaponManager.items["player"]["stats"]["health"]-$Health.max_value)
 		$Health.max_value=WeaponManager.items["player"]["stats"]["health"]
@@ -102,32 +108,41 @@ func update(node, item, keyName, number):
 		upgrades[number][4]=item["stats"]["damage"]
 
 func _on__pressed() -> void:
-	upgrade(0)
+	option(0)
 
 
 func _on_two_pressed() -> void:
-	upgrade(1)
+	option(1)
 
 
 func _on_three_pressed() -> void:
-	upgrade(2)
+	option(2)
 	
-func upgrade(item):
+func option(number):
+	selected=number
 	$LevelUp.visible=false
+	if(WeaponManager.items[upgrades[selected][0]]["level"]>=1):
+		$DoubleNothing.visible=true
+	else:
+		upgrade()
+	
+func upgrade():
+	$LevelUp.visible=false
+	$DoubleNothing.visible=false
 	get_tree().paused=false
-	WeaponManager.items[upgrades[item][0]]["stats"][upgrades[item][1]]=upgrades[item][3]
-	WeaponManager.items[upgrades[item][0]]["stats"][upgrades[item][2]]=upgrades[item][4]
-	WeaponManager.items[upgrades[item][0]]["level"]+=1
-	if(WeaponManager.items[upgrades[item][0]]["level"]==1):
-		if(upgrades[item][0]=="fireball"):
+	WeaponManager.items[upgrades[selected][0]]["stats"][upgrades[selected][1]]=upgrades[selected][3]
+	WeaponManager.items[upgrades[selected][0]]["stats"][upgrades[selected][2]]=upgrades[selected][4]
+	WeaponManager.items[upgrades[selected][0]]["level"]+=1
+	if(WeaponManager.items[upgrades[selected][0]]["level"]==1):
+		if(upgrades[selected][0]=="fireball"):
 			_on_fireball_pressed()
-		elif(upgrades[item][0]=="fist"):
+		elif(upgrades[selected][0]=="fist"):
 			_on_fist_pressed()
-		elif(upgrades[item][0]=="lightning"):
+		elif(upgrades[selected][0]=="lightning"):
 			_on_lightning_pressed()
-		elif(upgrades[item][0]=="tornado"):
+		elif(upgrades[selected][0]=="tornado"):
 			_on_tornado_pressed()
-		elif(upgrades[item][0]=="dust halo"):
+		elif(upgrades[selected][0]=="dust halo"):
 			_on_halo_pressed()
 
 
@@ -177,3 +192,19 @@ func _on_halo_pressed() -> void:
 
 func _on_dead_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+
+
+func _on_double_pressed() -> void:
+	visible=false
+	oldPosition=player.global_position
+	player.global_position=Vector2(100000, 100000)
+	var newDouble=doubleScene.instantiate()
+	get_parent().add_child(newDouble)
+	newDouble.global_position=Vector2(100000, 100000)
+	await get_tree().process_frame
+	print("=== DOUBLE TREE ===")
+	newDouble.print_tree_pretty()
+	newDouble.get_node("HUD").player=player
+	newDouble.get_node("HUD").visible=true
+	player.reparent(newDouble)
+	player.z_index+=10
