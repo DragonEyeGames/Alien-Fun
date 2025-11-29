@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b63htkdr5kjxk"]
+[gd_scene load_steps=12 format=3 uid="uid://b63htkdr5kjxk"]
 
 [ext_resource type="Script" uid="uid://d3otae7uu46w" path="res://Scripts/hud.gd" id="1_37p78"]
 [ext_resource type="FontFile" uid="uid://7we6om3e3y5a" path="res://Fonts/SpaceShards-RpExo.ttf" id="2_64ctp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ba588pyrmhlhy" path="res://Scenes/playerAttacks/fistSpawner.tscn" id="3_a2258"]
 [ext_resource type="PackedScene" uid="uid://boi11dw0fn8rt" path="res://Scenes/playerAttacks/lightningSpawner.tscn" id="4_a2258"]
 [ext_resource type="PackedScene" uid="uid://cf32ceetu56je" path="res://Scenes/playerAttacks/tornadoSpawner.tscn" id="5_36asn"]
+[ext_resource type="PackedScene" uid="uid://pqw2rkwfrn2k" path="res://Scenes/playerAttacks/rotatingSpawner.tscn" id="6_8jye8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37p78"]
 bg_color = Color(0.20452014, 0.34521127, 0.4255934, 1)
@@ -26,6 +27,7 @@ fireballSpawner = ExtResource("2_640wx")
 fistSpawner = ExtResource("3_a2258")
 lightningSpawner = ExtResource("4_a2258")
 tornadoSpawner = ExtResource("5_36asn")
+dustSpawner = ExtResource("6_8jye8")
 
 [node name="XP" type="ProgressBar" parent="."]
 anchors_preset = 14
@@ -511,6 +513,56 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="Slot5" type="Control" parent="Weapons/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.6807844, 0.0015621317, 0.83868885, 1)
+
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot5"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 687.0
+offset_bottom = 65.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 54
+text = "Dust Halo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot5"]
+layout_mode = 0
+offset_top = 67.0
+offset_right = 687.0
+offset_bottom = 150.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 41
+text = "Have you been nice?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="halo" type="Button" parent="Weapons/VBoxContainer/Slot5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [node name="Over" type="Control" parent="."]
 visible = false
 z_index = 1
@@ -608,4 +660,5 @@ vertical_alignment = 1
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot2/lightning" to="." method="_on_lightning_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot3/fist" to="." method="_on_fist_pressed"]
 [connection signal="pressed" from="Weapons/VBoxContainer/Slot4/tornado" to="." method="_on_tornado_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Slot5/halo" to="." method="_on_halo_pressed"]
 [connection signal="pressed" from="Over/ColorRect3/Dead" to="." method="_on_dead_pressed"]

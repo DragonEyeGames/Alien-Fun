@@ -42,6 +42,25 @@ var items = {
 		"count": "add"
 		}
 	},
+	"dust halo": {
+		"level": 0,
+		"description": "Have you been nice?",
+		"stats" : {
+			"damage": 7,
+			"size": 1,
+			"count": 1.5,
+		},
+		"upgrades" : {
+			"damage": 1.2,
+			"size": 1.1,
+			"count": .5
+		},
+		"upgrade_type": {
+		"damage": "mul",
+		"size": "mul",
+		"count": "add"
+		}
+	},
 	"lightning": {
 		"level": 0,
 		"description": "Kerzap",

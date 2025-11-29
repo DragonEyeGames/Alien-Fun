@@ -1,0 +1,115 @@
+[gd_scene load_steps=22 format=3 uid="uid://6bytdxoaf341"]
+
+[ext_resource type="Texture2D" uid="uid://dg6h7sgywvke" path="res://Assets/rotatingAttack/FX001.png" id="1_3cbwa"]
+[ext_resource type="Script" uid="uid://cmge72kt7adop" path="res://Scenes/playerAttacks/rotater.gd" id="1_60hxp"]
+[ext_resource type="Texture2D" uid="uid://dwa5hy85g3x45" path="res://Assets/rotatingAttack/FX002.png" id="2_60hxp"]
+[ext_resource type="Texture2D" uid="uid://cgy0g7y1hm7sk" path="res://Assets/rotatingAttack/FX003.png" id="3_chxsq"]
+[ext_resource type="Texture2D" uid="uid://rc1sbks1g1n" path="res://Assets/rotatingAttack/FX004.png" id="4_3wwoa"]
+[ext_resource type="Texture2D" uid="uid://dykf6n0pnq4bo" path="res://Assets/rotatingAttack/FX005.png" id="5_ecod2"]
+[ext_resource type="Texture2D" uid="uid://bnhv18ektwm5f" path="res://Assets/rotatingAttack/FX006.png" id="6_ff6sy"]
+[ext_resource type="Texture2D" uid="uid://cv2m4tckpkr64" path="res://Assets/rotatingAttack/FX007.png" id="7_usash"]
+[ext_resource type="Texture2D" uid="uid://203cut18f8nq" path="res://Assets/rotatingAttack/FX008.png" id="8_1taxs"]
+[ext_resource type="Texture2D" uid="uid://c3tt577m8iqg5" path="res://Assets/rotatingAttack/FX009.png" id="9_e10km"]
+[ext_resource type="Texture2D" uid="uid://jhovt84xcj33" path="res://Assets/rotatingAttack/FX010.png" id="10_klkpm"]
+[ext_resource type="Texture2D" uid="uid://d26v2um5f883q" path="res://Assets/rotatingAttack/FX011.png" id="11_ey4ej"]
+[ext_resource type="Texture2D" uid="uid://bf81hbhf6efkp" path="res://Assets/rotatingAttack/FX012.png" id="12_wek3y"]
+[ext_resource type="Texture2D" uid="uid://ecylfdratxwb" path="res://Assets/rotatingAttack/FX013.png" id="13_5mk30"]
+[ext_resource type="Texture2D" uid="uid://8hjolj7fyf7q" path="res://Assets/rotatingAttack/FX014.png" id="14_455hm"]
+[ext_resource type="Texture2D" uid="uid://qxfg7jbbbd0g" path="res://Assets/rotatingAttack/FX015.png" id="15_62m5g"]
+[ext_resource type="Texture2D" uid="uid://v2ff86iljhye" path="res://Assets/rotatingAttack/FX016.png" id="16_frfyn"]
+[ext_resource type="Texture2D" uid="uid://cyg0illg14fd2" path="res://Assets/rotatingAttack/FX017.png" id="17_nev8e"]
+[ext_resource type="Texture2D" uid="uid://b3a4sqvxq34mu" path="res://Assets/rotatingAttack/FX018.png" id="18_tk3q2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r4sdc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3cbwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_60hxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_chxsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3wwoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ecod2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ff6sy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_usash")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1taxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e10km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_klkpm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ey4ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_wek3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5mk30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_455hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_62m5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_frfyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_nev8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_tk3q2")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 36.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gisag"]
+radius = 157.20624
+
+[node name="Rotater" type="Node2D"]
+z_index = 1
+script = ExtResource("1_60hxp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 3
+texture_filter = 1
+position = Vector2(-26.199997, 12.399998)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_r4sdc")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 3
+position = Vector2(-15.199997, -18.600006)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 3
+shape = SubResource("CircleShape2D_gisag")
+disabled = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_sprite_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

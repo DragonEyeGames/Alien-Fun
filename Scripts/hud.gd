@@ -10,6 +10,7 @@ var upgrades=[["", "", "", 0, 0], ["", "", "", 0, 0], ["", "", "", 0, 0]]
 @export var fistSpawner: PackedScene
 @export var lightningSpawner: PackedScene
 @export var tornadoSpawner: PackedScene
+@export var dustSpawner: PackedScene
 
 @export var spawnController: Node2D
 
@@ -124,6 +125,8 @@ func upgrade(item):
 			_on_lightning_pressed()
 		elif(upgrades[item][0]=="tornado"):
 			_on_tornado_pressed()
+		elif(upgrades[item][0]=="dust halo"):
+			_on_halo_pressed()
 
 
 func _on_fireball_pressed() -> void:
@@ -158,6 +161,14 @@ func _on_tornado_pressed() -> void:
 	WeaponManager.items["tornado"]["level"]=1
 	get_tree().paused=false
 	var spawner = tornadoSpawner.instantiate()
+	player.add_child(spawner)
+	spawner.global_position=player.global_position
+	
+func _on_halo_pressed() -> void:
+	$Weapons.visible=false
+	WeaponManager.items["dust halo"]["level"]=1
+	get_tree().paused=false
+	var spawner = dustSpawner.instantiate()
 	player.add_child(spawner)
 	spawner.global_position=player.global_position
 

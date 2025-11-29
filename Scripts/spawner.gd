@@ -5,6 +5,8 @@ var collided=[]
 @export var projectile: PackedScene
 @export var item:=""
 
+@export var always=false
+
 var canFire=true
 
 func _process(_delta: float) -> void:
@@ -12,12 +14,15 @@ func _process(_delta: float) -> void:
 		for enemy in collided:
 			if(enemy.health<=0):
 				collided.erase(enemy)
-	if(len(collided)>=1 and canFire):
+	if((len(collided)>=1 or always) and canFire):
 		canFire=false
 		var newProjectile=projectile.instantiate()
 		get_parent().get_parent().add_child(newProjectile)
 		newProjectile.global_position=self.global_position
-		newProjectile.target=collided.pick_random()
+		if(not always):
+			newProjectile.target=collided.pick_random()
+		else:
+			newProjectile.target=get_parent()
 		var damage=WeaponManager.items[item]["stats"]["damage"]
 		newProjectile.damage=damage
 		newProjectile.scale=Vector2(WeaponManager.items[item]["stats"]["size"], WeaponManager.items[item]["stats"]["size"])
