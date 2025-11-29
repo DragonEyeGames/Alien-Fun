@@ -209,11 +209,12 @@ func _on_double_pressed() -> void:
 	spawnController.process_mode=Node.PROCESS_MODE_DISABLED
 	WeaponManager.double=true
 	newDouble.global_position=player.global_position
+	var toSpawn=null
 	for key in spawnController.spawn_table:
 		if(spawnController.spawn_table[key]==0):
 			var path="res://Scenes/enemies/" + str(key) + ".tscn"
 			bossType=key
-			var toSpawn=load(path).instantiate()
+			toSpawn=load(path).instantiate()
 			newDouble.add_child(toSpawn)
 			newDouble.boss=toSpawn
 			var newOffset:=Vector2.ZERO
@@ -226,6 +227,21 @@ func _on_double_pressed() -> void:
 			toSpawn.boss=true
 			toSpawn.hud=self
 			break
+	if(toSpawn==null):
+		var path="res://Scenes/enemies/yellow.tscn"
+		bossType="yellow"
+		toSpawn=load(path).instantiate()
+		newDouble.add_child(toSpawn)
+		newDouble.boss=toSpawn
+		var newOffset:=Vector2.ZERO
+		newOffset.x=randf_range(-1.0, 1.0)
+		newOffset.y=randf_range(-1.0, 1.0)
+		newOffset=newOffset.normalized()
+		newOffset*=1000
+		toSpawn.global_position=player.global_position+newOffset
+		toSpawn.player=player
+		toSpawn.boss=true
+		toSpawn.hud=self
 	await get_tree().process_frame
 	reparent(newDouble)
 	player.reparent(newDouble)
@@ -234,11 +250,15 @@ func _on_double_pressed() -> void:
 	player.get_node("MainCamera").position_smoothing_enabled=true
 
 func bossDefeated():
+	if($Lost.visible or $BossDefeated.visible):
+		return
 	await get_tree().create_timer(1).timeout
 	$BossDefeated.visible=true
 
 
 func _on_beaten_pressed() -> void:
+	if($Lost.visible):
+		return
 	player.health=oldHealth
 	spawnController.process_mode=Node.PROCESS_MODE_INHERIT
 	upgrade()
@@ -259,11 +279,15 @@ func _on_beaten_pressed() -> void:
 	player.get_node("MainCamera").position_smoothing_enabled=true
 
 func playerDied():
+	if($Lost.visible or $BossDefeated.visible):
+		return
 	await get_tree().create_timer(1).timeout
 	$Lost.visible=true
 
 
 func _on_defeated_pressed() -> void:
+	if($BossDefeated.visible):
+		return
 	player.dead=false
 	player.health=oldHealth
 	spawnController.process_mode=Node.PROCESS_MODE_INHERIT

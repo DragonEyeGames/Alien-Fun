@@ -1,94 +1,80 @@
-[gd_scene load_steps=21 format=3 uid="uid://8qkt4c08y501"]
+[gd_scene load_steps=19 format=3 uid="uid://mma5i8sgflq"]
 
-[ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_ujxlu"]
-[ext_resource type="Texture2D" uid="uid://b84burx5hq7w" path="res://Assets/Slime pack/Tiny_Slime Purple.png" id="2_71adm"]
-[ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="3_jbxg2"]
+[ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_3wybq"]
+[ext_resource type="Texture2D" uid="uid://dn8w2qk0hfk2k" path="res://Assets/Slime pack/Slime purple.png" id="2_ujxlu"]
+[ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="3_n85vw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8o3ji"]
-atlas = ExtResource("2_71adm")
-region = Rect2(96, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_71adm"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(144, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cer8i"]
-atlas = ExtResource("2_71adm")
-region = Rect2(120, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbxg2"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(192, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_syrau"]
-atlas = ExtResource("2_71adm")
-region = Rect2(144, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hgny"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(240, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gglvw"]
-atlas = ExtResource("2_71adm")
-region = Rect2(168, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2xu7"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(288, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnjt0"]
-atlas = ExtResource("2_71adm")
-region = Rect2(192, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_soltj"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(336, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wdv7i"]
-atlas = ExtResource("2_71adm")
-region = Rect2(216, 0, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2afk"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(384, 144, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s0ajb"]
-atlas = ExtResource("2_71adm")
-region = Rect2(96, 72, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_im8op"]
-atlas = ExtResource("2_71adm")
-region = Rect2(120, 72, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ojtsw"]
-atlas = ExtResource("2_71adm")
-region = Rect2(144, 72, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkj8j"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(432, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
-atlas = ExtResource("3_jbxg2")
+atlas = ExtResource("3_n85vw")
 region = Rect2(48, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n0g06"]
-atlas = ExtResource("3_jbxg2")
+atlas = ExtResource("3_n85vw")
 region = Rect2(72, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5en6l"]
-atlas = ExtResource("2_71adm")
-region = Rect2(0, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_03wyn"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(0, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pivfw"]
-atlas = ExtResource("2_71adm")
-region = Rect2(24, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_e280o"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(48, 48, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_erc1h"]
-atlas = ExtResource("2_71adm")
-region = Rect2(72, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqdr3"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(144, 48, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_fegq7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_73neb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8o3ji")
+"texture": SubResource("AtlasTexture_71adm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cer8i")
+"texture": SubResource("AtlasTexture_jbxg2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_syrau")
+"texture": SubResource("AtlasTexture_7hgny")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gglvw")
+"texture": SubResource("AtlasTexture_u2xu7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rnjt0")
+"texture": SubResource("AtlasTexture_soltj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wdv7i")
+"texture": SubResource("AtlasTexture_s2afk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s0ajb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_im8op")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ojtsw")
+"texture": SubResource("AtlasTexture_wkj8j")
 }],
 "loop": false,
 "name": &"dead",
@@ -107,13 +93,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5en6l")
+"texture": SubResource("AtlasTexture_03wyn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pivfw")
+"texture": SubResource("AtlasTexture_e280o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_erc1h")
+"texture": SubResource("AtlasTexture_vqdr3")
 }],
 "loop": true,
 "name": &"walkSide",
@@ -128,20 +114,17 @@ radius = 49.0408
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_ujxlu")
-speed = 1.3
-damage = 7
-attackTime = 0.35
-health = 15
+script = ExtResource("1_3wybq")
+damage = 45
+attackTime = 0.15
+health = 110
 
 [node name="Icon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(6, 6)
-sprite_frames = SubResource("SpriteFrames_fegq7")
+sprite_frames = SubResource("SpriteFrames_73neb")
 animation = &"dead"
 autoplay = "walkSide"
-frame = 8
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jmwgi")
