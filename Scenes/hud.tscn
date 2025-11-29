@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b63htkdr5kjxk"]
+[gd_scene load_steps=11 format=3 uid="uid://b63htkdr5kjxk"]
 
 [ext_resource type="Script" uid="uid://d3otae7uu46w" path="res://Scripts/hud.gd" id="1_37p78"]
 [ext_resource type="FontFile" uid="uid://7we6om3e3y5a" path="res://Fonts/SpaceShards-RpExo.ttf" id="2_64ctp"]
@@ -13,6 +13,12 @@ bg_color = Color(0.20452014, 0.34521127, 0.4255934, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_64ctp"]
 bg_color = Color(0.21514505, 0.4861815, 0.86815435, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36asn"]
+bg_color = Color(0.5726692, 1.0227784e-06, 1.92523e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8jye8"]
+bg_color = Color(0.21568628, 0.4862745, 0, 1)
+
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_37p78")
@@ -21,7 +27,7 @@ fistSpawner = ExtResource("3_a2258")
 lightningSpawner = ExtResource("4_a2258")
 tornadoSpawner = ExtResource("5_36asn")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="XP" type="ProgressBar" parent="."]
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
@@ -34,6 +40,23 @@ theme_override_styles/background = SubResource("StyleBoxFlat_37p78")
 theme_override_styles/fill = SubResource("StyleBoxFlat_64ctp")
 max_value = 10.0
 show_percentage = false
+
+[node name="Health" type="ProgressBar" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -380.0
+offset_right = -1401.0
+offset_bottom = -291.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_64ctp")
+theme_override_font_sizes/font_size = 82
+theme_override_styles/background = SubResource("StyleBoxFlat_36asn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8jye8")
+value = 50.0
 
 [node name="LevelUp" type="Control" parent="."]
 visible = false

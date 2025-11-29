@@ -15,7 +15,7 @@ var upgrades=[["", "", "", 0, 0], ["", "", "", 0, 0], ["", "", "", 0, 0]]
 
 func _ready() -> void:
 	randomize()
-	bar=$ProgressBar
+	bar=$XP
 	pickWeapon()
 	
 func pickWeapon():
@@ -30,6 +30,11 @@ func pickWeapon():
 	get_tree().paused=true
 	
 func _process(_delta: float) -> void:
+	if($Health.max_value!=WeaponManager.items["player"]["stats"]["health"]):
+		var health = $Health.value + (WeaponManager.items["player"]["stats"]["health"]-$Health.max_value)
+		$Health.max_value=WeaponManager.items["player"]["stats"]["health"]
+		$Health.value=health
+	$Health.value=player.health
 	bar.value=player.xp-xpOffset
 	if(bar.value >=bar.max_value):
 		bar.value-=bar.max_value
