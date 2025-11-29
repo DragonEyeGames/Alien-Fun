@@ -5,6 +5,7 @@ class_name Enemy
 @export var speed:= 1.0
 @export var damage = 5
 @export var attackTime:=0.5
+@export var health = 2
 var attacking:=[]
 var canAttack=true
 
@@ -28,7 +29,12 @@ func _physics_process(_delta: float) -> void:
 		velocity*=speed
 		move_and_slide()
 
-func kill():
+func hurt(newDamage):
+	health-=newDamage
+	if(health<=0):
+		die()
+
+func die():
 	dead=true
 	$Icon.play("dead")
 	

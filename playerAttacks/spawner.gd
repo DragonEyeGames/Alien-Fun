@@ -1,0 +1,33 @@
+extends Node2D
+class_name Spawner
+
+var collided=[]
+@export var projectile: PackedScene
+@export var item:=""
+
+var canFire=true
+
+func _process(_delta: float) -> void:
+	if(len(collided)>=1):
+		for enemy in collided:
+			if(enemy.health<=0):
+				collided.erase(enemy)
+	if(len(collided)>=1 and canFire):
+		canFire=false
+		var newProjectile=projectile.instantiate()
+		get_parent().get_parent().add_child(newProjectile)
+		newProjectile.global_position=self.global_position
+		newProjectile.target=collided.pick_random()
+		var damage=WeaponManager.items[item]["stats"]["damage"]
+		newProjectile.damage=damage
+		await get_tree().create_timer(1/WeaponManager.items[item]["stats"]["count"]).timeout
+		canFire=true
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if(body is Enemy):
+		collided.append(body)
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if(body is Enemy and body in collided):
+		collided.erase(body)

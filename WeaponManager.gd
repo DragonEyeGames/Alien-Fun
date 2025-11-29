@@ -7,20 +7,22 @@ var items = {
 			"damage": 5,
 			"speed": 2,
 			"size": 1.0,
-			"count": 1
+			"count": 1,
 		}
 	},
-
-	"shield": {
+	"fist": {
 		"level": 1,
-		"max_level": 5,
-		"stats": {
-			"hp": 100,
-			"regen": 1.0
-		},
-		"upgrades": {
-			"hp": 1.30,
-			"regen": 1.05
+		"stats" : {
+			"damage": 1,
+			"size": .5,
+			"count": 5,
 		}
-	}
+	},
+	"player": {
+		"level": 1,
+		"stats" : {
+			"health": 100,
+			"speed": 1,
+		}
+	},
 }

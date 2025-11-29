@@ -1,14 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://xpvqcnr0u5oj"]
 
-[ext_resource type="Script" uid="uid://bt56rsrnrht8h" path="res://fireballSpawner.gd" id="1_roily"]
+[ext_resource type="Script" uid="uid://dkyuuoaigofkd" path="res://playerAttacks/spawner.gd" id="1_56jl0"]
 [ext_resource type="PackedScene" uid="uid://co5qijj7trxor" path="res://fireball.tscn" id="2_f0588"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vscca"]
-radius = 436.50543
+radius = 699.10297
 
 [node name="FireballSpawner" type="Node2D"]
-script = ExtResource("1_roily")
-fireball = ExtResource("2_f0588")
+script = ExtResource("1_56jl0")
+projectile = ExtResource("2_f0588")
+item = "fireball"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

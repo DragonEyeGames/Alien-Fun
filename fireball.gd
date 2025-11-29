@@ -1,5 +1,6 @@
 extends CharacterBody2D
 var target
+var damage=1
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -14,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body is Enemy):
-		body.kill()
+		body.hurt(damage)
 		velocity=Vector2.ZERO
 		$Sprite.play("explode")
 
