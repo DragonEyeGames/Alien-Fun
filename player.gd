@@ -5,7 +5,7 @@ var xp=0
 
 @export var waitTime:=1.0
 
-@export var health=20
+@export var health=100
 
 func _physics_process(_delta: float) -> void:
 	velocity=Input.get_vector("Left", "Right", "Up", "Down")
@@ -14,5 +14,6 @@ func _physics_process(_delta: float) -> void:
 	
 func attack(damage):
 	health-=damage
-	visible=false
-	get_tree().paused=true
+	if(health<=0):
+		visible=false
+		get_tree().paused=true

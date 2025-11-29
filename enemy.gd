@@ -17,6 +17,7 @@ func _process(_delta: float) -> void:
 		if(canAttack and len(attacking)>=1):
 			canAttack=false
 			for item in attacking:
+				print("Badook")
 				item.attack(damage)
 			await get_tree().create_timer(attackTime).timeout
 			canAttack=true
