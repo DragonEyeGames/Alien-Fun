@@ -34,6 +34,8 @@ func _process(_delta: float) -> void:
 		if(shooter and canShoot and len(shooting)>=1):
 			canShoot=false
 			for item in shooting:
+				$Icon.play("shoot")
+				await get_tree().create_timer(.2).timeout
 				var newProjectile=projectile.instantiate()
 				get_parent().add_child(newProjectile)
 				newProjectile.global_position=self.global_position

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=19 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="PackedScene" uid="uid://bsqgmksc0bna4" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bdtgp3fkcxsqy" path="res://Scripts/spawnController.gd" id="2_0xm2m"]
@@ -8,6 +8,60 @@
 [ext_resource type="Texture2D" uid="uid://b4dijtc2rur66" path="res://Assets/Tilemap/Details.png" id="7_344ge"]
 [ext_resource type="AudioStream" uid="uid://c3b4pp3magbc5" path="res://music/epic-music-loop-17027.mp3" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://beb14fvgkun2b" path="res://Assets/Tilemap/Objects.png" id="8_ynf5e"]
+
+[sub_resource type="Animation" id="Animation_wv2oh"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pp50m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dslyd"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dslyd"]
+_data = {
+&"RESET": SubResource("Animation_pp50m"),
+&"fade": SubResource("Animation_wv2oh"),
+&"show": SubResource("Animation_dslyd")
+}
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6bp64"]
 texture = ExtResource("6_21xkr")
@@ -3440,6 +3494,21 @@ enemies = Array[PackedScene]([ExtResource("3_h2yge")])
 [node name="HUD" parent="." node_paths=PackedStringArray("player", "spawnController") instance=ExtResource("5_lquwl")]
 player = NodePath("../Player")
 spawnController = NodePath("../SpawnController")
+
+[node name="Blocker" type="ColorRect" parent="HUD"]
+z_index = 15
+offset_left = -12.0
+offset_top = -7.0
+offset_right = 1938.0
+offset_bottom = 1101.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/Blocker"]
+libraries = {
+&"": SubResource("AnimationLibrary_dslyd")
+}
+autoplay = "fade"
 
 [node name="Ground" type="TileMapLayer" parent="."]
 z_index = -2
