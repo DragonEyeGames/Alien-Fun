@@ -3,6 +3,7 @@ var target
 var damage=1
 
 func _ready() -> void:
+	$Whoosh.pitch_scale+=randf_range(-.1, .1)
 	await get_tree().create_timer(.25).timeout
 	$Area2D/CollisionShape2D.set_deferred("disabled", false)
 

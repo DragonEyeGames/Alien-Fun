@@ -3,12 +3,17 @@ var target
 var damage=1
 var pulling=[]
 var hit=[]
+
 func _ready() -> void:
+	$Sound.pitch_scale+=randf_range(-.1, .1)
 	await get_tree().process_frame
 	velocity=target.global_position-global_position
 	velocity=velocity.normalized()*300
 	velocity*=WeaponManager.items["tornado"]["stats"]["speed"]
-	await get_tree().create_timer(WeaponManager.items["tornado"]["stats"]["duration"], false).timeout
+	await get_tree().create_timer(WeaponManager.items["tornado"]["stats"]["duration"]-.1, false).timeout
+	var tween=create_tween()
+	tween.tween_property($Sound, "volume_db", -80, .1)
+	await get_tree().create_timer(.1).timeout
 	queue_free()
 	
 func _physics_process(_delta: float) -> void:

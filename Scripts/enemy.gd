@@ -51,6 +51,8 @@ func hurt(newDamage):
 
 func die():
 	dead=true
+	$Splat.pitch_scale+=randf_range(-.1, .1)
+	$Splat.play()
 	$Icon.play("dead")
 	
 

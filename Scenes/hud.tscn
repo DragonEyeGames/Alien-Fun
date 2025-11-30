@@ -416,7 +416,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Weapons" type="Control" parent="."]
-visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -468,11 +467,12 @@ offset_top = 124.0
 offset_right = 698.0
 offset_bottom = 722.0
 
-[node name="Slot" type="Control" parent="Weapons/VBoxContainer"]
+[node name="Fireball" type="Control" parent="Weapons/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot"]
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Fireball"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -482,7 +482,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.35686275, 0.5568628, 0, 1)
 
-[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot"]
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Fireball"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -495,7 +495,7 @@ text = "Fireball"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot"]
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Fireball"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -508,7 +508,7 @@ text = "I don't care how big the room is"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="fireball" type="Button" parent="Weapons/VBoxContainer/Slot"]
+[node name="fireball" type="Button" parent="Weapons/VBoxContainer/Fireball"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -517,12 +517,12 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Slot2" type="Control" parent="Weapons/VBoxContainer"]
+[node name="Lightning" type="Control" parent="Weapons/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot2"]
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Lightning"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -532,7 +532,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.8862745, 0.5137255, 0, 1)
 
-[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot2"]
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Lightning"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -545,7 +545,7 @@ text = "Lightning"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot2"]
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Lightning"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -558,7 +558,7 @@ text = "kerzap"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lightning" type="Button" parent="Weapons/VBoxContainer/Slot2"]
+[node name="lightning" type="Button" parent="Weapons/VBoxContainer/Lightning"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -567,12 +567,12 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Slot3" type="Control" parent="Weapons/VBoxContainer"]
+[node name="Fist" type="Control" parent="Weapons/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot3"]
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Fist"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -582,7 +582,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.34872898, 0.6224446, 0.98377293, 1)
 
-[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot3"]
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Fist"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -595,7 +595,7 @@ text = "Fist"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot3"]
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Fist"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -608,7 +608,7 @@ text = "Express your anger"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="fist" type="Button" parent="Weapons/VBoxContainer/Slot3"]
+[node name="fist" type="Button" parent="Weapons/VBoxContainer/Fist"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -617,12 +617,12 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Slot4" type="Control" parent="Weapons/VBoxContainer"]
+[node name="Tornado" type="Control" parent="Weapons/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot4"]
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Tornado"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -632,7 +632,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.8352941, 0, 0.2509804, 1)
 
-[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot4"]
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Tornado"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -645,7 +645,7 @@ text = "Tornado"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot4"]
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Tornado"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -658,7 +658,7 @@ text = "Blow them away"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="tornado" type="Button" parent="Weapons/VBoxContainer/Slot4"]
+[node name="tornado" type="Button" parent="Weapons/VBoxContainer/Tornado"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -667,12 +667,12 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="Slot5" type="Control" parent="Weapons/VBoxContainer"]
+[node name="Dust" type="Control" parent="Weapons/VBoxContainer"]
 visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Slot5"]
+[node name="ColorRect" type="ColorRect" parent="Weapons/VBoxContainer/Dust"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -682,7 +682,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.6807844, 0.0015621317, 0.83868885, 1)
 
-[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot5"]
+[node name="title" type="RichTextLabel" parent="Weapons/VBoxContainer/Dust"]
 layout_mode = 0
 offset_top = 3.0
 offset_right = 687.0
@@ -695,7 +695,7 @@ text = "Dust Halo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Slot5"]
+[node name="description" type="RichTextLabel" parent="Weapons/VBoxContainer/Dust"]
 layout_mode = 0
 offset_top = 67.0
 offset_right = 687.0
@@ -704,11 +704,11 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_64ctp")
 theme_override_font_sizes/normal_font_size = 41
-text = "Have you been nice?"
+text = "Someone hasn't cleaned recently"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="halo" type="Button" parent="Weapons/VBoxContainer/Slot5"]
+[node name="halo" type="Button" parent="Weapons/VBoxContainer/Dust"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1018,11 +1018,11 @@ vertical_alignment = 1
 [connection signal="pressed" from="LevelUp/VBoxContainer/Slot3/3" to="." method="_on_three_pressed"]
 [connection signal="pressed" from="DoubleNothing/Doub/double" to="." method="_on_double_pressed"]
 [connection signal="pressed" from="DoubleNothing/Not/pass" to="." method="upgrade"]
-[connection signal="pressed" from="Weapons/VBoxContainer/Slot/fireball" to="." method="_on_fireball_pressed"]
-[connection signal="pressed" from="Weapons/VBoxContainer/Slot2/lightning" to="." method="_on_lightning_pressed"]
-[connection signal="pressed" from="Weapons/VBoxContainer/Slot3/fist" to="." method="_on_fist_pressed"]
-[connection signal="pressed" from="Weapons/VBoxContainer/Slot4/tornado" to="." method="_on_tornado_pressed"]
-[connection signal="pressed" from="Weapons/VBoxContainer/Slot5/halo" to="." method="_on_halo_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Fireball/fireball" to="." method="_on_fireball_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Lightning/lightning" to="." method="_on_lightning_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Fist/fist" to="." method="_on_fist_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Tornado/tornado" to="." method="_on_tornado_pressed"]
+[connection signal="pressed" from="Weapons/VBoxContainer/Dust/halo" to="." method="_on_halo_pressed"]
 [connection signal="pressed" from="Over/ColorRect3/Dead" to="." method="_on_dead_pressed"]
 [connection signal="pressed" from="BossDefeated/ColorRect3/beaten" to="." method="_on_beaten_pressed"]
 [connection signal="pressed" from="Lost/ColorRect3/defeated" to="." method="_on_defeated_pressed"]

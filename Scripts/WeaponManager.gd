@@ -46,7 +46,7 @@ var items = {
 	},
 	"dust halo": {
 		"level": 0,
-		"description": "Have you been nice?",
+		"description": "Someone hasn't cleaned recently",
 		"stats" : {
 			"damage": 7,
 			"size": 1,

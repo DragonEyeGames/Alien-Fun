@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://cjpwlfk6dl4ae"]
+[gd_scene load_steps=20 format=3 uid="uid://cjpwlfk6dl4ae"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_uuwk1"]
 [ext_resource type="Texture2D" uid="uid://bgctqggfv5dim" path="res://Assets/Slime pack/Slime yellow.png" id="2_uuwk1"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="3_sebv8"]
+[ext_resource type="AudioStream" uid="uid://ck33bjywsmq8r" path="res://music/splat.mp3" id="4_lnj6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnj6c"]
 atlas = ExtResource("2_uuwk1")
@@ -126,7 +127,7 @@ scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_wf4ne")
 animation = &"walkSide"
 autoplay = "walkSide"
-frame_progress = 0.6459532
+frame_progress = 0.33291262
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jmwgi")
@@ -137,6 +138,10 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
 shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="Splat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lnj6c")
+volume_db = -5.0
 
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]

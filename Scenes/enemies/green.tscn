@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bo0qyneck17bj"]
+[gd_scene load_steps=20 format=3 uid="uid://bo0qyneck17bj"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_bx5io"]
 [ext_resource type="Texture2D" uid="uid://cycw254ygcde3" path="res://Assets/Slime pack/Slime green.png" id="2_bx5io"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="3_vyy73"]
+[ext_resource type="AudioStream" uid="uid://ck33bjywsmq8r" path="res://music/splat.mp3" id="4_6iikm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6iikm"]
 atlas = ExtResource("2_bx5io")
@@ -137,6 +138,10 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
 shape = SubResource("CircleShape2D_4gyqm")
+
+[node name="Splat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_6iikm")
+volume_db = -5.0
 
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]

@@ -51,7 +51,7 @@ func _process(_delta: float) -> void:
 		xpOffset+=bar.max_value
 		bar.max_value+=round((bar.max_value/2))
 		levelUp()
-	if(player.dead and $Over.visible==false):
+	if(player.dead and $Over.visible==false and WeaponManager.double==false):
 		await get_tree().create_timer(2).timeout
 		$Over.visible=true
 		
@@ -150,6 +150,13 @@ func upgrade():
 		elif(upgrades[selected][0]=="dust halo"):
 			_on_halo_pressed()
 
+func doubleUpgrade():
+	$LevelUp.visible=false
+	$DoubleNothing.visible=false
+	get_tree().paused=false
+	WeaponManager.items[upgrades[selected][0]]["stats"][upgrades[selected][1]]+=2*(upgrades[selected][3]-WeaponManager.items[upgrades[selected][0]]["stats"][upgrades[selected][1]])
+	WeaponManager.items[upgrades[selected][0]]["stats"][upgrades[selected][2]]+=2*(upgrades[selected][4]-WeaponManager.items[upgrades[selected][0]]["stats"][upgrades[selected][2]])
+	WeaponManager.items[upgrades[selected][0]]["level"]+=2
 
 func _on_fireball_pressed() -> void:
 	$Weapons.visible=false
@@ -263,8 +270,7 @@ func _on_beaten_pressed() -> void:
 		return
 	player.health=oldHealth
 	spawnController.process_mode=Node.PROCESS_MODE_INHERIT
-	upgrade()
-	upgrade()
+	doubleUpgrade()
 	var double=get_parent()
 	reparent(double.get_parent())
 	player.reparent(get_parent())

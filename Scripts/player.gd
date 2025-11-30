@@ -45,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 func attack(damage):
 	if(dead):
 		return
+	$Animation.play("hit")
 	damage*=2
 	health-=damage
 	if(health<=0):

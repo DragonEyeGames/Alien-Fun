@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvwdn0ymfscae"]
+[gd_scene load_steps=13 format=3 uid="uid://bvwdn0ymfscae"]
 
 [ext_resource type="Script" uid="uid://6hesq8wne26" path="res://Scripts/tornado.gd" id="1_7v0nr"]
 [ext_resource type="Texture2D" uid="uid://lquu12syisnw" path="res://Assets/tornado.png" id="2_wpmn3"]
+[ext_resource type="AudioStream" uid="uid://b6hs65xdhhxsj" path="res://music/hurricane-140908.mp3" id="3_wpmn3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qbhq1"]
 atlas = ExtResource("2_wpmn3")
@@ -82,6 +83,11 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage"]
 shape = SubResource("CircleShape2D_8yhts")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wpmn3")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="Pull" to="." method="_on_pull_body_entered"]
 [connection signal="body_exited" from="Pull" to="." method="_on_pull_body_exited"]

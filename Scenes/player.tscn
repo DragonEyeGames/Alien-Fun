@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://bsqgmksc0bna4"]
+[gd_scene load_steps=57 format=3 uid="uid://bsqgmksc0bna4"]
 
 [ext_resource type="Script" uid="uid://cs7lf8qf4fj87" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://b13qf42fhbpr2" path="res://Assets/player/Moviment.png" id="2_cvnsp"]
+[ext_resource type="Shader" uid="uid://cxb7nottno561" path="res://Scenes/flash.gdshader" id="2_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://d2u2l723ep8ot" path="res://Assets/ghost/E1001.png" id="3_7dp3o"]
 [ext_resource type="Texture2D" uid="uid://c3cw0t5fuscri" path="res://Assets/ghost/E1002.png" id="4_h4iuc"]
 [ext_resource type="Texture2D" uid="uid://cal2my70xktv2" path="res://Assets/ghost/E1003.png" id="5_fd4e3"]
@@ -14,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://c20i4axpuf8ko" path="res://Assets/ghost/E1010.png" id="12_bi64h"]
 [ext_resource type="Texture2D" uid="uid://crq8ob05g3120" path="res://Assets/ghost/E1011.png" id="13_2ijsl"]
 [ext_resource type="Texture2D" uid="uid://chydnaulrjwxf" path="res://Assets/ghost/E1012.png" id="14_p1odr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fd4e3"]
+shader = ExtResource("2_h4iuc")
+shader_parameter/whiteness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wohnl"]
 atlas = ExtResource("2_cvnsp")
@@ -338,12 +343,50 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_h4iuc"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/whiteness")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fd4e3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/whiteness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qqcod"]
+_data = {
+&"RESET": SubResource("Animation_fd4e3"),
+&"hit": SubResource("Animation_h4iuc")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_onrkg")
 speed = 350.0
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_fd4e3")
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_olqyp")
 animation = &"idle"
@@ -375,5 +418,10 @@ animation = &"rise"
 autoplay = "empty"
 frame = 12
 frame_progress = 1.0
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qqcod")
+}
 
 [connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
