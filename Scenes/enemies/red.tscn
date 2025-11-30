@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://cu6ps77lutwb3"]
+[gd_scene load_steps=31 format=3 uid="uid://cu6ps77lutwb3"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_dufne"]
 [ext_resource type="Texture2D" uid="uid://cx7jek02pa5f6" path="res://Assets/Slime pack/Slime red.png" id="2_bxn3e"]
 [ext_resource type="Shader" uid="uid://cxb7nottno561" path="res://shaders/flash.gdshader" id="2_m0fs3"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="2_ob8w4"]
+[ext_resource type="PackedScene" uid="uid://dvphgeni0yqdi" path="res://Scenes/slimeProjectile.tscn" id="2_yefo0"]
 [ext_resource type="AudioStream" uid="uid://ck33bjywsmq8r" path="res://music/splat.mp3" id="4_bxn3e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yefo0"]
@@ -38,6 +39,22 @@ region = Rect2(384, 144, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_722tp"]
 atlas = ExtResource("2_bxn3e")
 region = Rect2(432, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxpfe"]
+atlas = ExtResource("2_bxn3e")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wdm7"]
+atlas = ExtResource("2_bxn3e")
+region = Rect2(288, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufvwb"]
+atlas = ExtResource("2_bxn3e")
+region = Rect2(336, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yn8ch"]
+atlas = ExtResource("2_bxn3e")
+region = Rect2(432, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
 atlas = ExtResource("2_ob8w4")
@@ -89,6 +106,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xxpfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wdm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufvwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yn8ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufvwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wdm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxpfe")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pwjut")
 }, {
 "duration": 1.0,
@@ -119,6 +162,21 @@ radius = 43.56604
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 49.0408
 
+[sub_resource type="Animation" id="Animation_137p8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whiteness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_b7s2d"]
 resource_name = "hit"
 length = 0.2
@@ -135,26 +193,14 @@ tracks/0/keys = {
 "values": [0.0, 1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_137p8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:material:shader_parameter/whiteness")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a2402"]
 _data = {
 &"RESET": SubResource("Animation_137p8"),
 &"hit": SubResource("Animation_b7s2d")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m0fs3"]
+radius = 422.3707
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -163,16 +209,19 @@ speed = 0.9
 damage = 15
 attackTime = 0.25
 health = 50
+shooter = true
+type = "red"
+projectile = ExtResource("2_yefo0")
 
 [node name="Icon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yefo0")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_xxpfe")
-animation = &"walkSide"
+animation = &"shoot"
 autoplay = "walkSide"
-frame = 2
-frame_progress = 0.40741152
+frame = 6
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jmwgi")
@@ -193,6 +242,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_a2402")
 }
 
+[node name="ShootZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootZone"]
+shape = SubResource("CircleShape2D_m0fs3")
+
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_exited" from="AttackZone" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="ShootZone" to="." method="_on_shoot_zone_body_entered"]
+[connection signal="area_exited" from="ShootZone" to="." method="_on_shoot_zone_area_exited"]

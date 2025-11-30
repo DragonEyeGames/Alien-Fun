@@ -9,7 +9,11 @@ class_name Enemy
 var attacking:=[]
 var canAttack=true
 @export var boss:=false
-
+@export var shooter:=false
+@export var type=""
+@export var projectile: PackedScene
+var shooting:=[]
+var canShoot=true
 var hud
 
 const xp = preload("res://scenes/xp.tscn")
@@ -27,6 +31,17 @@ func _process(_delta: float) -> void:
 				item.attack(damage)
 			await get_tree().create_timer(attackTime).timeout
 			canAttack=true
+		if(shooter and canShoot and len(shooting)>=1):
+			canShoot=false
+			for item in shooting:
+				var newProjectile=projectile.instantiate()
+				get_parent().add_child(newProjectile)
+				newProjectile.global_position=self.global_position
+				newProjectile.type=type
+				newProjectile.damage=damage
+				newProjectile.target=player
+			await get_tree().create_timer(attackTime*2).timeout
+			canShoot=true
 
 func _physics_process(_delta: float) -> void:
 	if(WeaponManager.double and not boss):
@@ -59,13 +74,16 @@ func die():
 
 
 func _on_icon_animation_finished() -> void:
-	if(boss==false):
-		var newXP=xp.instantiate()
-		get_parent().add_child(newXP)
-		newXP.global_position=global_position
+	if($Icon.animation=="dead"):
+		if(boss==false):
+			var newXP=xp.instantiate()
+			get_parent().add_child(newXP)
+			newXP.global_position=global_position
+		else:
+			hud.bossDefeated()
+		queue_free()
 	else:
-		hud.bossDefeated()
-	queue_free()
+		$Icon.play("walkSide")
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -78,3 +96,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(body.get_parent() is Player):
 		attacking.erase(body.get_parent())
+
+
+func _on_shoot_zone_body_entered(body: Node2D) -> void:
+	if(body.get_parent() is Player):
+		shooting.append(body.get_parent())
+
+
+func _on_shoot_zone_area_exited(area: Area2D) -> void:
+	if(area.get_parent() is Player and area.get_parent() in shooting):
+		shooting.erase(area.get_parent())
