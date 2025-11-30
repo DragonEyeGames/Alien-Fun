@@ -64,6 +64,14 @@ func spawnWave():
 		offset=offset.normalized()
 		offset*=1000
 		toSpawn.global_position=player.global_position+offset
+		if(toSpawn.global_position.x>5370):
+			toSpawn.global_position.x=5370
+		if(toSpawn.global_position.y<-3333):
+			toSpawn.global_position.y=-3333
+		if(toSpawn.global_position.x<-4115):
+			toSpawn.global_position.x=-4115
+		if(toSpawn.global_position.y>3090):
+			toSpawn.global_position.y=3090
 	quantity*=1.1
 	await get_tree().create_timer(4, false).timeout
 	spawnWave()

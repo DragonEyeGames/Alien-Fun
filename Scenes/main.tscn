@@ -3416,6 +3416,7 @@ size = Vector2(11445, 177)
 [node name="Player" parent="." node_paths=PackedStringArray("hud") instance=ExtResource("1_ig7tw")]
 z_index = 1
 collision_layer = 0
+collision_mask = 17
 hud = NodePath("../HUD")
 
 [node name="MainCamera" type="Camera2D" parent="Player"]
@@ -3455,13 +3456,15 @@ tile_map_data = PackedByteArray("AADL/9X/AAAUAAQAAADL/9j/AAABAAIAAADL/9n/AAAPAAI
 tile_set = SubResource("TileSet_6iyac")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1421, -3461)
 shape = SubResource("RectangleShape2D_6bp64")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1369, 3225)
+position = Vector2(1366, 3164)
 shape = SubResource("RectangleShape2D_6bp64")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]

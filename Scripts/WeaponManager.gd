@@ -5,7 +5,7 @@ var double=false
 var items = {
 	"fireball": {
 		"level": 0,
-		"description": "I don't care how big the room is",
+		"description": "I didn't ask how big the room is",
 		"stats" : {
 			"damage": 10,
 			"speed": 2,
@@ -114,8 +114,8 @@ var items = {
 			"speed": 1
 		},
 		"upgrades" : {
-			"health": 1.05,
-			"speed": 1.05
+			"health": 1.4,
+			"speed": 1.15
 		},
 		"upgrade_type": {
 			"health": "mul",

@@ -263,6 +263,7 @@ grow_vertical = 2
 flat = true
 
 [node name="DoubleNothing" type="Control" parent="."]
+visible = false
 z_index = 1
 layout_mode = 3
 anchors_preset = 0
@@ -504,7 +505,7 @@ mouse_filter = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("2_64ctp")
 theme_override_font_sizes/normal_font_size = 41
-text = "I don't care how big the room is"
+text = "I didn't ask how big the room is"
 horizontal_alignment = 1
 vertical_alignment = 1
 
