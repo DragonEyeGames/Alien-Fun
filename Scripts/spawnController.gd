@@ -62,7 +62,7 @@ func spawnWave():
 		offset.x=randf_range(-1.0, 1.0)
 		offset.y=randf_range(-1.0, 1.0)
 		offset=offset.normalized()
-		offset*=1000
+		offset*=1750
 		toSpawn.global_position=player.global_position+offset
 		if(toSpawn.global_position.x>5370):
 			toSpawn.global_position.x=5370
@@ -72,8 +72,8 @@ func spawnWave():
 			toSpawn.global_position.x=-4115
 		if(toSpawn.global_position.y>3090):
 			toSpawn.global_position.y=3090
-	quantity*=1.1
-	await get_tree().create_timer(4, false).timeout
+		await get_tree().create_timer(4.0/quantity, false).timeout
+	quantity*=1.05
 	spawnWave()
 
 func pickSpawn():

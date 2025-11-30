@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://mma5i8sgflq"]
+[gd_scene load_steps=33 format=3 uid="uid://mma5i8sgflq"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_3wybq"]
 [ext_resource type="PackedScene" uid="uid://dvphgeni0yqdi" path="res://Scenes/slimeProjectile.tscn" id="2_7hgny"]
@@ -39,6 +39,30 @@ region = Rect2(384, 144, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkj8j"]
 atlas = ExtResource("2_ujxlu")
 region = Rect2(432, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73neb"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(288, 240, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u346p"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctuti"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(288, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c2v7"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(336, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fasf0"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(384, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aopj8"]
+atlas = ExtResource("2_ujxlu")
+region = Rect2(432, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
 atlas = ExtResource("3_n85vw")
@@ -87,6 +111,29 @@ animations = [{
 "loop": false,
 "name": &"dead",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73neb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u346p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctuti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c2v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fasf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aopj8")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -175,7 +222,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_7hgny")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_73neb")
-animation = &"dead"
+animation = &"shoot"
 autoplay = "walkSide"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bo0qyneck17bj"]
+[gd_scene load_steps=31 format=3 uid="uid://bo0qyneck17bj"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_bx5io"]
 [ext_resource type="PackedScene" uid="uid://dvphgeni0yqdi" path="res://Scenes/slimeProjectile.tscn" id="2_6xm3v"]
@@ -39,6 +39,22 @@ region = Rect2(384, 144, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_asldy"]
 atlas = ExtResource("2_bx5io")
 region = Rect2(432, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yg4k7"]
+atlas = ExtResource("2_bx5io")
+region = Rect2(240, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcetr"]
+atlas = ExtResource("2_bx5io")
+region = Rect2(288, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fetaw"]
+atlas = ExtResource("2_bx5io")
+region = Rect2(336, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uifh5"]
+atlas = ExtResource("2_bx5io")
+region = Rect2(432, 48, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwjut"]
 atlas = ExtResource("3_vyy73")
@@ -87,6 +103,32 @@ animations = [{
 "loop": false,
 "name": &"dead",
 "speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg4k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcetr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fetaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uifh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fetaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcetr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yg4k7")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -157,6 +199,9 @@ _data = {
 &"hit": SubResource("Animation_b7s2d")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xm3v"]
+radius = 422.3707
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_bx5io")
@@ -172,10 +217,8 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_6xm3v")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_yg4k7")
-animation = &"dead"
+animation = &"shoot"
 autoplay = "walkSide"
-frame = 6
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jmwgi")
@@ -196,6 +239,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_a2402")
 }
 
+[node name="ShootZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootZone"]
+shape = SubResource("CircleShape2D_6xm3v")
+
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]
 [connection signal="area_exited" from="AttackZone" to="." method="_on_area_2d_body_exited"]
+[connection signal="area_entered" from="ShootZone" to="." method="_on_shoot_zone_body_entered"]
+[connection signal="area_exited" from="ShootZone" to="." method="_on_shoot_zone_area_exited"]
