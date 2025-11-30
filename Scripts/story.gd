@@ -47,3 +47,23 @@ func _on_skip_pressed() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+
+
+func _on_skip_mouse_entered() -> void:
+	var tween=create_tween()
+	tween.tween_property($Skip, "modulate:a", 1, .1)
+
+
+func _on_skip_mouse_exited() -> void:
+	var tween=create_tween()
+	tween.tween_property($Skip, "modulate:a", .5, .1)
+
+
+func _on_continue_mouse_entered() -> void:
+	var tween=create_tween()
+	tween.tween_property($Continue, "scale", Vector2(.5, .5), .1)
+
+
+func _on_continue_mouse_exited() -> void:
+	var tween=create_tween()
+	tween.tween_property($Continue, "scale", Vector2(.45, .45), .1)

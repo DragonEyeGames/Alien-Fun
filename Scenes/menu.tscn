@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://dy62jrn31156f"]
 
 [ext_resource type="FontFile" uid="uid://7we6om3e3y5a" path="res://Fonts/SpaceShards-RpExo.ttf" id="1_r2bx6"]
-[ext_resource type="Script" uid="uid://b3kslp10m0spd" path="res://shaders/menu.gd" id="1_wv2oh"]
+[ext_resource type="Script" uid="uid://b3kslp10m0spd" path="res://Scripts/menu.gd" id="1_wv2oh"]
 [ext_resource type="Shader" uid="uid://sdm0bt7nhfy2" path="res://shaders/fog.gdshader" id="2_rh0bk"]
 [ext_resource type="Texture2D" uid="uid://e1bwcac8m2aj" path="res://Assets/Button.png" id="3_lahtc"]
 [ext_resource type="AudioStream" uid="uid://bybq4xhp7u1du" path="res://music/space-traveller-62973.mp3" id="5_pp50m"]
@@ -9,7 +9,7 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rh0bk"]
 frequency = 0.0025
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rh0bk"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pp50m"]
 width = 960
 height = 540
 noise = SubResource("FastNoiseLite_rh0bk")
@@ -17,7 +17,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lahtc"]
 shader = ExtResource("2_rh0bk")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_rh0bk")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_pp50m")
 shader_parameter/density = 0.1810000085975
 shader_parameter/speed = Vector2(0.02, 0.01)
 
@@ -25,7 +25,7 @@ shader_parameter/speed = Vector2(0.02, 0.01)
 seed = 1
 frequency = 0.0025
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wv2oh"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dslyd"]
 width = 960
 height = 540
 noise = SubResource("FastNoiseLite_lahtc")
@@ -33,7 +33,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pp50m"]
 shader = ExtResource("2_rh0bk")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_wv2oh")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dslyd")
 shader_parameter/density = 0.1810000085975
 shader_parameter/speed = Vector2(-0.04, 0.02)
 
@@ -57,7 +57,7 @@ shader_parameter/speed = Vector2(0.01, -0.05)
 seed = 3
 frequency = 0.0025
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pp50m"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u4e13"]
 width = 960
 height = 540
 noise = SubResource("FastNoiseLite_wv2oh")
@@ -65,7 +65,7 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dslyd"]
 shader = ExtResource("2_rh0bk")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_pp50m")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_u4e13")
 shader_parameter/density = 0.1810000085975
 shader_parameter/speed = Vector2(-0.05, -0.04)
 
@@ -73,7 +73,7 @@ shader_parameter/speed = Vector2(-0.05, -0.04)
 seed = 5
 frequency = 0.0025
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dslyd"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mldir"]
 width = 960
 height = 540
 noise = SubResource("FastNoiseLite_pp50m")
@@ -81,13 +81,13 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2nrl"]
 shader = ExtResource("2_rh0bk")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_dslyd")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_mldir")
 shader_parameter/density = 0.1810000085975
 shader_parameter/speed = Vector2(-0.1, 0.01)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rh0bk"]
 shader = ExtResource("2_rh0bk")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_dslyd")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_mldir")
 shader_parameter/density = 0.1810000085975
 shader_parameter/speed = Vector2(0.02, 0)
 
@@ -95,7 +95,7 @@ shader_parameter/speed = Vector2(0.02, 0)
 seed = 6
 frequency = 0.0025
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u4e13"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tq3uo"]
 width = 960
 height = 540
 noise = SubResource("FastNoiseLite_s2nrl")
@@ -103,9 +103,24 @@ seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mldir"]
 shader = ExtResource("2_rh0bk")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_u4e13")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_tq3uo")
 shader_parameter/density = 0.1810000085975
 shader_parameter/speed = Vector2(0.07, -0.05)
+
+[sub_resource type="Animation" id="Animation_pp50m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_wv2oh"]
 resource_name = "fade"
@@ -121,21 +136,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_pp50m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dslyd"]
@@ -287,6 +287,41 @@ text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Full" type="TextureButton" parent="."]
+z_index = 5
+layout_mode = 0
+offset_left = 522.0
+offset_top = 779.0
+offset_right = 1318.0
+offset_bottom = 1036.0
+pivot_offset = Vector2(407, 131)
+texture_normal = ExtResource("3_lahtc")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Full"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 39
+theme_override_fonts/normal_font = ExtResource("1_r2bx6")
+theme_override_fonts/bold_font = ExtResource("1_r2bx6")
+theme_override_font_sizes/normal_font_size = 110
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "Fullscreen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Blocker" type="ColorRect" parent="."]
 z_index = 15
 layout_mode = 0
@@ -311,3 +346,4 @@ parameters/looping = true
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Full" to="." method="_on_full_pressed"]

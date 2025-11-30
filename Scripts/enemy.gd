@@ -16,7 +16,7 @@ var shooting:=[]
 var canShoot=true
 var hud
 
-const xp = preload("res://scenes/xp.tscn")
+const xp = preload("res://Scenes/xp.tscn")
 
 var dead=false
 

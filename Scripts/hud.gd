@@ -256,6 +256,7 @@ func _on_double_pressed() -> void:
 		toSpawn.player=player
 		toSpawn.boss=true
 		toSpawn.hud=self
+	toSpawn.health*=2
 	await get_tree().process_frame
 	reparent(newDouble)
 	player.reparent(newDouble)

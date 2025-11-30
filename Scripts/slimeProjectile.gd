@@ -11,6 +11,8 @@ func _ready() -> void:
 	if(target==null):
 		queue_free()
 		return
+	look_at(target.global_position)
+	rotation_degrees-=90
 	velocity=target.global_position-global_position
 	velocity=velocity.normalized()*700
 	
