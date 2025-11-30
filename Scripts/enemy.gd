@@ -27,7 +27,6 @@ func _process(_delta: float) -> void:
 		if(canAttack and len(attacking)>=1):
 			canAttack=false
 			for item in attacking:
-				print("Badook")
 				item.attack(damage)
 			await get_tree().create_timer(attackTime).timeout
 			canAttack=true
@@ -89,9 +88,7 @@ func _on_icon_animation_finished() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("AA")
 	if(body.get_parent() is Player):
-		print("AEWA")
 		attacking.append(body.get_parent())
 
 

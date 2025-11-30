@@ -46,7 +46,6 @@ func updateTable():
 		spawn_table[dictLookups[toIncrease+1]]+=.5
 	if(toIncrease+3>len(dictLookups)):
 		spawn_table[dictLookups[toIncrease+2]]+=.25
-	print(spawn_table)
 	
 func spawnWave():
 	while WeaponManager.double:

@@ -41,9 +41,13 @@ func _process(_delta: float) -> void:
 	if(player==null):
 		return
 	if($Health.max_value!=WeaponManager.items["player"]["stats"]["health"]):
-		var health = $Health.value + (WeaponManager.items["player"]["stats"]["health"]-$Health.max_value)
+		await get_tree().process_frame
+		print(player.health)
+		var health = player.health + (WeaponManager.items["player"]["stats"]["health"]-$Health.max_value)
 		$Health.max_value=WeaponManager.items["player"]["stats"]["health"]
 		$Health.value=health
+		player.health=health
+		print(player.health)
 	$Health.value=player.health
 	bar.value=player.xp-xpOffset
 	if(bar.value >=bar.max_value):
@@ -208,6 +212,7 @@ func _on_dead_pressed() -> void:
 
 func _on_double_pressed() -> void:
 	oldHealth=player.health
+	player.health=$Health.max_value
 	player.get_node("MainCamera").position_smoothing_enabled=false
 	get_tree().paused=false
 	$XP.visible=false

@@ -3552,3 +3552,4 @@ stream = ExtResource("8_344ge")
 volume_db = -6.0
 autoplay = true
 max_distance = 10000000000.0
+parameters/looping = true
