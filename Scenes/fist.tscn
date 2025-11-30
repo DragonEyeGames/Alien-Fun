@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://6qakiq2vl3hu"]
+[gd_scene load_steps=5 format=3 uid="uid://6qakiq2vl3hu"]
 
 [ext_resource type="Script" uid="uid://bc5aovfgk8mmk" path="res://Scripts/fist.gd" id="1_cqe2n"]
 [ext_resource type="Texture2D" uid="uid://dqgs6eg24bocp" path="res://Assets/glove.png" id="2_nr678"]
+[ext_resource type="AudioStream" uid="uid://co07phvm5phxj" path="res://music/punch.mp3" id="3_hiloq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmw3u"]
 radius = 48.373547
@@ -22,5 +23,9 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_nmw3u")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_hiloq")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

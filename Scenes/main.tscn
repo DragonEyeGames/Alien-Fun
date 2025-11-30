@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://dnnka5th1gldj"]
+[gd_scene load_steps=15 format=4 uid="uid://dnnka5th1gldj"]
 
 [ext_resource type="PackedScene" uid="uid://bsqgmksc0bna4" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bdtgp3fkcxsqy" path="res://Scripts/spawnController.gd" id="2_0xm2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b63htkdr5kjxk" path="res://Scenes/hud.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://fbgcmdap5aaq" path="res://Assets/Tilemap/Ground_rocks.png" id="6_21xkr"]
 [ext_resource type="Texture2D" uid="uid://b4dijtc2rur66" path="res://Assets/Tilemap/Details.png" id="7_344ge"]
+[ext_resource type="AudioStream" uid="uid://c3b4pp3magbc5" path="res://music/epic-music-loop-17027.mp3" id="8_344ge"]
 [ext_resource type="Texture2D" uid="uid://beb14fvgkun2b" path="res://Assets/Tilemap/Objects.png" id="8_ynf5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6bp64"]
@@ -3472,3 +3473,10 @@ shape = SubResource("RectangleShape2D_6bp64")
 position = Vector2(5512, 145)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_6bp64")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("8_344ge")
+volume_db = -6.0
+autoplay = true
+max_distance = 10000000000.0

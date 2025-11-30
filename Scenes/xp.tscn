@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs3eiwttbwsgf"]
+[gd_scene load_steps=5 format=3 uid="uid://cs3eiwttbwsgf"]
 
-[ext_resource type="Script" uid="uid://xuwiyrjvovn4" path="res://Scripts/xp.gd" id="1_1jxo8"]
-[ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="1_kl4lw"]
+[ext_resource type="Script" uid="uid://xuwiyrjvovn4" path="res://Scripts/xp.gd" id="1_vftcp"]
+[ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="2_xogn2"]
+[ext_resource type="AudioStream" uid="uid://dwc3xu0t4ouk6" path="res://music/cartoon_wink_magic_sparkle-6896.mp3" id="3_ennmk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1jxo8"]
 
 [node name="XP" type="Node2D"]
 scale = Vector2(6, 6)
-script = ExtResource("1_1jxo8")
+script = ExtResource("1_vftcp")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-0.16666667, 4.8333335)
@@ -20,8 +21,12 @@ shape = SubResource("CircleShape2D_1jxo8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-0.5, 4.5)
-texture = ExtResource("1_kl4lw")
+texture = ExtResource("2_xogn2")
 region_enabled = true
 region_rect = Rect2(148, 85, 15, 7)
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ennmk")
+volume_db = 10.0
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

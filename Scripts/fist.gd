@@ -3,6 +3,7 @@ var target
 var damage=1
 
 func _ready() -> void:
+	$"Hit".pitch_scale+=randf_range(-.1, .1)
 	await get_tree().process_frame
 	look_at(target.global_position)
 	rotation_degrees+=90

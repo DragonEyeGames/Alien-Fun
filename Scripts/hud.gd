@@ -56,6 +56,8 @@ func _process(_delta: float) -> void:
 		$Over.visible=true
 		
 func levelUp():
+	if(WeaponManager.double):
+		return
 	spawnController.quantity+=1
 	get_tree().paused=true
 	var upgradeChoices = WeaponManager.items.duplicate()

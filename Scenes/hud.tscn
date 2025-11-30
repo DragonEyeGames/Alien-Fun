@@ -469,7 +469,6 @@ offset_right = 698.0
 offset_bottom = 722.0
 
 [node name="Slot" type="Control" parent="Weapons/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 

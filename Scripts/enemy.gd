@@ -42,6 +42,10 @@ func _physics_process(_delta: float) -> void:
 
 func hurt(newDamage):
 	health-=newDamage
+	var counter = load("res://Scenes/damageCount.tscn").instantiate()
+	get_parent().add_child(counter)
+	counter.global_position=global_position
+	counter.damage=newDamage
 	if(health<=0):
 		die()
 

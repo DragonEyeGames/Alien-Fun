@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c75dv3vjyg12n"]
+[gd_scene load_steps=20 format=3 uid="uid://c75dv3vjyg12n"]
 
 [ext_resource type="Script" uid="uid://bbvrthph6egcv" path="res://Scripts/lightning.gd" id="1_xsu8v"]
 [ext_resource type="Texture2D" uid="uid://c3k4lvmoncqjs" path="res://Assets/lightning/A2001-1.png" id="2_wd73o"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cle65t71qche2" path="res://Assets/lightning/A2001-13.png" id="14_ynchv"]
 [ext_resource type="Texture2D" uid="uid://cwf7hspchd531" path="res://Assets/lightning/A2001-14.png" id="15_3ydw5"]
 [ext_resource type="Texture2D" uid="uid://bys8fwolhr0ge" path="res://Assets/lightning/A2001-15.png" id="16_d3imx"]
+[ext_resource type="AudioStream" uid="uid://sgx5usgps7rt" path="res://music/lightning-strike-386161.mp3" id="17_x7vgj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dat1d"]
 radius = 106.21205
@@ -92,6 +93,11 @@ position = Vector2(-3, -195)
 sprite_frames = SubResource("SpriteFrames_5os4j")
 animation = &"zap"
 autoplay = "zap"
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_x7vgj")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
