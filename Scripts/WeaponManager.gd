@@ -93,7 +93,7 @@ var items = {
 			"speed": 1.5,
 			"size": 1,
 			"count": .5,
-			"duration": 3
+			"duration": 1.5
 		},
 		"upgrades" : {
 			"damage": 1.2,

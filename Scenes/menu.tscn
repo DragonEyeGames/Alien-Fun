@@ -175,7 +175,7 @@ script = ExtResource("1_wv2oh")
 z_index = 2
 layout_mode = 0
 offset_right = 1924.0
-offset_bottom = 415.0
+offset_bottom = 509.0
 mouse_filter = 2
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -185,8 +185,7 @@ theme_override_fonts/bold_font = ExtResource("1_r2bx6")
 theme_override_font_sizes/normal_font_size = 220
 theme_override_font_sizes/bold_font_size = 120
 bbcode_enabled = true
-text = "Cosmic Defense:
-[b]The last stand"
+text = "Cosmic Defenders"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -255,10 +254,10 @@ color = Color(0, 0, 0, 1)
 [node name="TextureButton" type="TextureButton" parent="."]
 z_index = 5
 layout_mode = 0
-offset_left = 574.0
-offset_top = 524.0
-offset_right = 1370.0
-offset_bottom = 781.0
+offset_left = 580.0
+offset_top = 458.0
+offset_right = 1376.0
+offset_bottom = 715.0
 pivot_offset = Vector2(407, 131)
 texture_normal = ExtResource("3_lahtc")
 
@@ -291,9 +290,9 @@ vertical_alignment = 1
 z_index = 5
 layout_mode = 0
 offset_left = 567.0
-offset_top = 767.0
+offset_top = 753.0
 offset_right = 1363.0
-offset_bottom = 1024.0
+offset_bottom = 1010.0
 pivot_offset = Vector2(407, 131)
 texture_normal = ExtResource("3_lahtc")
 

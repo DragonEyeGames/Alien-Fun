@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://de4vyuket6cko"]
+
+[ext_resource type="Script" uid="uid://bbq3hk8lt6ntd" path="res://Scenes/playerAttacks/rock.gd" id="1_223yi"]
+[ext_resource type="Texture2D" uid="uid://dvtcjacicacds" path="res://Assets/Rock2b.png" id="2_rn4dd"]
+[ext_resource type="Texture2D" uid="uid://b4mgmc26sckxw" path="res://Assets/rockExplode/FX044_01.png" id="3_ceqrx"]
+[ext_resource type="Texture2D" uid="uid://cqfh27ejmjn4g" path="res://Assets/rockExplode/FX044_02.png" id="4_u70wr"]
+[ext_resource type="Texture2D" uid="uid://cpm17cor4dhpd" path="res://Assets/rockExplode/FX044_03.png" id="5_eb2gd"]
+[ext_resource type="Texture2D" uid="uid://dhefuc5d30xcp" path="res://Assets/rockExplode/FX044_04.png" id="6_ghlcy"]
+[ext_resource type="Texture2D" uid="uid://dvsq8fswieakp" path="res://Assets/rockExplode/FX044_05.png" id="7_mrsiu"]
+[ext_resource type="Texture2D" uid="uid://cysaagp31bede" path="res://Assets/rockExplode/FX044_06.png" id="8_b1m4m"]
+[ext_resource type="AudioStream" uid="uid://gs8cm5r2pvdr" path="res://music/fireShoot.mp3" id="9_il76t"]
+[ext_resource type="AudioStream" uid="uid://ckvqujwngsw22" path="res://music/fireHit.mp3" id="10_ukqyf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6475d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rn4dd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ceqrx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u70wr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_eb2gd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ghlcy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mrsiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b1m4m")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0588"]
+radius = 84.29116
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olwj8"]
+radius = 30.265491
+
+[node name="Rock" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_223yi")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(3.0000076, -3.9999962)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_6475d")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_f0588")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_olwj8")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_il76t")
+volume_db = -5.0
+
+[node name="Launch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_ukqyf")
+volume_db = -5.0
+autoplay = true
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
