@@ -22,3 +22,13 @@ func _on_texture_button_mouse_exited() -> void:
 
 func _on_full_pressed() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WindowMode.WINDOW_MODE_FULLSCREEN)
+
+
+func _on_full_mouse_entered() -> void:
+	var tween=create_tween()
+	tween.tween_property($Full, "scale", Vector2(1.1, 1.1), .1)
+
+
+func _on_full_mouse_exited() -> void:
+	var tween=create_tween()
+	tween.tween_property($Full, "scale", Vector2(1, 1), .1)

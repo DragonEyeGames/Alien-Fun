@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cjpwlfk6dl4ae"]
+[gd_scene load_steps=33 format=3 uid="uid://cjpwlfk6dl4ae"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_uuwk1"]
 [ext_resource type="PackedScene" uid="uid://dvphgeni0yqdi" path="res://Scenes/slimeProjectile.tscn" id="2_4lofc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bgctqggfv5dim" path="res://Assets/Slime pack/Slime yellow.png" id="2_uuwk1"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="3_sebv8"]
 [ext_resource type="AudioStream" uid="uid://ck33bjywsmq8r" path="res://music/splat.mp3" id="4_lnj6c"]
+[ext_resource type="AudioStream" uid="uid://ddfjrwbw0nvnx" path="res://music/slime-splatter-4-220263.mp3" id="7_o3hu2"]
+[ext_resource type="PackedScene" uid="uid://cdd1sk6iafuhx" path="res://Scenes/health.tscn" id="8_xrytu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4lofc"]
 resource_local_to_scene = true
@@ -246,6 +248,13 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShootZone"]
 shape = SubResource("CircleShape2D_wk1hi")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_o3hu2")
+volume_db = -5.0
+
+[node name="Health" parent="." instance=ExtResource("8_xrytu")]
+visible = false
 
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]

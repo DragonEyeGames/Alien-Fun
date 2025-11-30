@@ -177,9 +177,9 @@ layout_mode = 0
 offset_right = 1924.0
 offset_bottom = 415.0
 mouse_filter = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 14
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 23
 theme_override_fonts/normal_font = ExtResource("1_r2bx6")
 theme_override_fonts/bold_font = ExtResource("1_r2bx6")
 theme_override_font_sizes/normal_font_size = 220
@@ -255,10 +255,10 @@ color = Color(0, 0, 0, 1)
 [node name="TextureButton" type="TextureButton" parent="."]
 z_index = 5
 layout_mode = 0
-offset_left = 529.0
-offset_top = 536.0
-offset_right = 1325.0
-offset_bottom = 793.0
+offset_left = 574.0
+offset_top = 524.0
+offset_right = 1370.0
+offset_bottom = 781.0
 pivot_offset = Vector2(407, 131)
 texture_normal = ExtResource("3_lahtc")
 
@@ -290,10 +290,10 @@ vertical_alignment = 1
 [node name="Full" type="TextureButton" parent="."]
 z_index = 5
 layout_mode = 0
-offset_left = 522.0
-offset_top = 779.0
-offset_right = 1318.0
-offset_bottom = 1036.0
+offset_left = 567.0
+offset_top = 767.0
+offset_right = 1363.0
+offset_bottom = 1024.0
 pivot_offset = Vector2(407, 131)
 texture_normal = ExtResource("3_lahtc")
 
@@ -346,4 +346,6 @@ parameters/looping = true
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="mouse_exited" from="TextureButton" to="." method="_on_texture_button_mouse_exited"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="mouse_entered" from="Full" to="." method="_on_full_mouse_entered"]
+[connection signal="mouse_exited" from="Full" to="." method="_on_full_mouse_exited"]
 [connection signal="pressed" from="Full" to="." method="_on_full_pressed"]

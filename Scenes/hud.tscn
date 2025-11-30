@@ -726,7 +726,7 @@ anchors_preset = 0
 offset_left = 596.0
 offset_top = 455.0
 offset_right = 1306.0
-offset_bottom = 786.0
+offset_bottom = 897.0
 
 [node name="ColorRect2" type="ColorRect" parent="Over"]
 z_index = -1
@@ -764,13 +764,37 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Score" type="RichTextLabel" parent="Over"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 120.0
+offset_right = 702.0
+offset_bottom = 236.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 82
+text = "Score: 670000000"
+vertical_alignment = 1
+
+[node name="Kill Count" type="RichTextLabel" parent="Over"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 205.0
+offset_right = 699.0
+offset_bottom = 321.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_64ctp")
+theme_override_font_sizes/normal_font_size = 82
+text = "Kills: 50067000"
+vertical_alignment = 1
+
 [node name="ColorRect3" type="ColorRect" parent="Over"]
 z_index = 1
 layout_mode = 0
-offset_left = 55.0
-offset_top = 177.0
-offset_right = 657.0
-offset_bottom = 277.0
+offset_left = 65.0
+offset_top = 320.0
+offset_right = 667.0
+offset_bottom = 420.0
 mouse_filter = 2
 color = Color(0.6589113, 1.2273341e-06, 9.62615e-08, 1)
 

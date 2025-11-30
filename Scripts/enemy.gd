@@ -16,11 +16,24 @@ var shooting:=[]
 var canShoot=true
 var hud
 
+var maxHealth=0
+
 const xp = preload("res://Scenes/xp.tscn")
 
 var dead=false
 
+func _ready():
+	await get_tree().process_frame
+	if(boss):
+		$Health.visible=true
+		$Health.max_value=health
+		$Health.value=health
+	else:
+		maxHealth=health
+
 func _process(_delta: float) -> void:
+	if(boss):
+		$Health.value=health
 	if(WeaponManager.double and not boss):
 		return
 	if(not dead):
@@ -58,6 +71,8 @@ func _physics_process(_delta: float) -> void:
 
 func hurt(newDamage):
 	$Flash.play("hit")
+	$Hit.pitch_scale=1+randf_range(-.1, .1)
+	$Hit.play()
 	health-=newDamage
 	var counter = load("res://Scenes/damageCount.tscn").instantiate()
 	get_parent().add_child(counter)
@@ -68,6 +83,8 @@ func hurt(newDamage):
 
 func die():
 	dead=true
+	WeaponManager.score+=maxHealth
+	WeaponManager.killCount+=1
 	$Splat.pitch_scale+=randf_range(-.1, .1)
 	$Splat.play()
 	$Icon.play("dead")

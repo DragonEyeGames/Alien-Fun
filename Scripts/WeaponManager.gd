@@ -2,6 +2,9 @@ extends Node
 
 var double=false
 
+var score = 0.0
+var killCount = 0.0
+
 var items = {
 	"fireball": {
 		"level": 0,

@@ -38,6 +38,8 @@ func pickWeapon():
 	get_tree().paused=true
 	
 func _process(_delta: float) -> void:
+	$Over/Score.text="Score: " + str(WeaponManager.score)
+	$"Over/Kill Count".text="Kills: " + str(WeaponManager.killCount)
 	if(player==null):
 		return
 	if($Health.max_value!=WeaponManager.items["player"]["stats"]["health"]):
