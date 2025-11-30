@@ -1,0 +1,496 @@
+[gd_scene load_steps=37 format=3 uid="uid://by7isfyut573w"]
+
+[ext_resource type="Texture2D" uid="uid://cinbr3beuwrta" path="res://Assets/Pixel Art Space/Earth.png" id="1_0u4mp"]
+[ext_resource type="Script" uid="uid://cv4c2rjiraham" path="res://shaders/story.gd" id="1_npe5w"]
+[ext_resource type="Shader" uid="uid://h4fljtgqdlp5" path="res://shaders/recolor.gdshader" id="2_3f6of"]
+[ext_resource type="Shader" uid="uid://sdm0bt7nhfy2" path="res://shaders/fog.gdshader" id="2_40iua"]
+[ext_resource type="Texture2D" uid="uid://b1kvwl1m0md8w" path="res://Assets/Pixel Art Space/Planet3.png" id="3_imc6r"]
+[ext_resource type="FontFile" uid="uid://7we6om3e3y5a" path="res://Fonts/SpaceShards-RpExo.ttf" id="4_0x784"]
+[ext_resource type="Texture2D" uid="uid://e1bwcac8m2aj" path="res://Assets/Button.png" id="5_0x784"]
+[ext_resource type="Texture2D" uid="uid://po67363sckp" path="res://Assets/raketegross.png" id="5_xmvek"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jktnh"]
+shader = ExtResource("2_3f6of")
+shader_parameter/color_count = 16
+shader_parameter/from_colors = PackedColorArray(0.21176471, 0.39607844, 0.7019608, 1, 0.32156864, 0.6313726, 0.7921569, 1, 0.16470589, 0.74509805, 0.23921569, 1, 0.13725491, 0.62352943, 0.19215687, 1, 0.34117648, 0.5529412, 0.7372549, 1, 0.13333334, 0.16078432, 0.6313726, 1, 0.11372549, 0.12941177, 0.5176471, 1, 0.039215688, 0.32156864, 0.2627451, 1, 0.050980393, 0.45490196, 0.3529412, 1, 0.0627451, 0.50980395, 0.25882354, 1, 0.38039216, 0.627451, 0.83137256, 1, 0.40392157, 0.6313726, 0.85882354, 1, 0.20784314, 0.24705882, 0.72156864, 1, 0.8627451, 0.85882354, 0.9529412, 1, 0.99607843, 0.99607843, 0.99607843, 1, 0.14117648, 0.21568628, 0.35686275, 1)
+shader_parameter/to_colors = PackedColorArray(0.44848847, 0.22965243, 0.05930396, 1, 0.5679988, 0.30948356, 0.096374355, 1, 0.5015802, 0.42429543, 0, 1, 0.40702572, 0.34634137, 0.002848378, 1, 0.41995838, 0.21573916, 0.07291273, 1, 0.30284935, 0.15354893, 0.04590068, 1, 0.17795512, 0.08367001, 0.01786403, 1, 0.33806017, 0.28768492, 0.002777, 1, 0.2967145, 0.19266734, 0.0031880366, 1, 0.22972977, 0.1536178, 0.007880592, 1, 0.54639196, 0.28226185, 0.08581639, 1, 0.6262659, 0.32963207, 0.114878334, 1, 0.5883398, 0.3081519, 0.09309315, 1, 0.25882354, 0.25882354, 0.25882354, 1, 0.13319641, 0.13319641, 0.13319638, 1, 0.19683766, 0.10384426, 0.027118176, 1)
+shader_parameter/threshold = 0.49
+shader_parameter/strength = 0.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_imc6r"]
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rh0bk"]
+width = 960
+height = 540
+noise = SubResource("FastNoiseLite_imc6r")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0x784"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_rh0bk")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(0.02, 0.01)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_npe5w"]
+seed = 1
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wv2oh"]
+width = 960
+height = 540
+noise = SubResource("FastNoiseLite_npe5w")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmvek"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_wv2oh")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(-0.04, 0.02)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3f6of"]
+seed = 2
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s2nrl"]
+width = 960
+height = 540
+noise = SubResource("FastNoiseLite_3f6of")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2tmgr"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_s2nrl")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(0.01, -0.05)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jktnh"]
+seed = 3
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pp50m"]
+width = 960
+height = 540
+noise = SubResource("FastNoiseLite_jktnh")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8tb0i"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_pp50m")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(-0.05, -0.04)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_k8j0y"]
+seed = 5
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dslyd"]
+width = 960
+height = 540
+noise = SubResource("FastNoiseLite_k8j0y")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onhpu"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dslyd")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(-0.1, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okuqh"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_dslyd")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(0.02, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_b01ge"]
+seed = 6
+frequency = 0.0025
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u4e13"]
+width = 960
+height = 540
+noise = SubResource("FastNoiseLite_b01ge")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1bye"]
+shader = ExtResource("2_40iua")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_u4e13")
+shader_parameter/density = 0.1810000085975
+shader_parameter/speed = Vector2(0.07, -0.05)
+
+[sub_resource type="Animation" id="Animation_3f6of"]
+resource_name = "queuePlanet"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planet3:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-225.99994, 498), Vector2(660.99994, 422)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Planet3/Raketegross:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.1428826, 2.5714326), Vector2(90.00002, 2.5714326)]
+}
+
+[sub_resource type="Animation" id="Animation_2tmgr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planet3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-225.99994, 498)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Planet3/Raketegross:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1428826, 2.5714326)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Earth:material:shader_parameter/strength")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jktnh"]
+resource_name = "drain"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Earth:material:shader_parameter/strength")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jktnh"]
+_data = {
+&"RESET": SubResource("Animation_2tmgr"),
+&"drain": SubResource("Animation_jktnh"),
+&"queuePlanet": SubResource("Animation_3f6of")
+}
+
+[sub_resource type="Animation" id="Animation_8tb0i"]
+resource_name = "intro"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k8j0y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_onhpu"]
+resource_name = "leave"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okuqh"]
+_data = {
+&"RESET": SubResource("Animation_k8j0y"),
+&"intro": SubResource("Animation_8tb0i"),
+&"leave": SubResource("Animation_onhpu")
+}
+
+[node name="Story" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_npe5w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = -6.0
+offset_top = -9.0
+offset_right = 1932.0
+offset_bottom = 1093.0
+color = Color(0, 0, 0, 1)
+
+[node name="Earth" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jktnh")
+position = Vector2(990, 418)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("1_0u4mp")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+modulate = Color(1, 1, 1, 0.38039216)
+repeat_size = Vector2(960, 540)
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_0x784")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(2.4366193e-07, 0.25543493, 0.027985264, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_xmvek")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(7.219613e-08, 0.21920863, 0.21920872, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_2tmgr")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(0.41133046, 0.00011998996, 0.4129009, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_8tb0i")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(0.38381964, 0.0026071286, 2.9119105e-06, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Parallax2D"]
+material = SubResource("ShaderMaterial_onhpu")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(0.3104328, 0.31043267, 4.813075e-08, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Parallax2D"]
+z_index = 1
+material = SubResource("ShaderMaterial_okuqh")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Parallax2D"]
+z_index = 1
+material = SubResource("ShaderMaterial_q1bye")
+offset_right = 960.0
+offset_bottom = 540.0
+mouse_filter = 2
+color = Color(0.33331358, 0.05184876, 4.813075e-08, 1)
+
+[node name="Planet3" type="Sprite2D" parent="."]
+position = Vector2(-225.99994, 498)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_imc6r")
+
+[node name="Raketegross" type="Sprite2D" parent="Planet3"]
+z_index = -1
+position = Vector2(1.1428826, 2.5714326)
+rotation = 1.5707964
+texture = ExtResource("5_xmvek")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 501.0
+offset_top = 621.0
+offset_right = 1480.0
+offset_bottom = 964.0
+color = Color(0.36282945, 0.36282945, 0.36282945, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="ColorRect2"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 7.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = -7.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 23
+theme_override_fonts/normal_font = ExtResource("4_0x784")
+theme_override_font_sizes/normal_font_size = 58
+text = "The earth used to live in peace all by it's lonesome."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="TextureButton" parent="."]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 578.00006
+offset_top = 761.00006
+offset_right = 1374.0
+offset_bottom = 1018.00006
+scale = Vector2(0.455, 0.455)
+pivot_offset = Vector2(407, 131)
+texture_normal = ExtResource("5_0x784")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Continue"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 39
+theme_override_fonts/normal_font = ExtResource("4_0x784")
+theme_override_fonts/bold_font = ExtResource("4_0x784")
+theme_override_font_sizes/normal_font_size = 160
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skip" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0.50980395)
+z_index = 5
+layout_mode = 0
+offset_left = 1336.0
+offset_top = 894.0
+offset_right = 2132.0
+offset_bottom = 1151.0
+scale = Vector2(0.455, 0.455)
+pivot_offset = Vector2(407, 131)
+texture_normal = ExtResource("5_0x784")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Skip"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 39
+theme_override_fonts/normal_font = ExtResource("4_0x784")
+theme_override_fonts/bold_font = ExtResource("4_0x784")
+theme_override_font_sizes/normal_font_size = 160
+theme_override_font_sizes/bold_font_size = 120
+bbcode_enabled = true
+text = "Skip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StoryTeller" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jktnh")
+}
+speed_scale = 0.51
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect3"]
+libraries = {
+&"": SubResource("AnimationLibrary_okuqh")
+}
+autoplay = "intro"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Skip" to="." method="_on_skip_pressed"]
