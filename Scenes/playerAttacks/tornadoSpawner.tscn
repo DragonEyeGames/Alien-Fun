@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cf32ceetu56je"]
 
 [ext_resource type="Script" uid="uid://dkyuuoaigofkd" path="res://Scripts/spawner.gd" id="1_epnxp"]
-[ext_resource type="PackedScene" uid="uid://bvwdn0ymfscae" path="res://Scenes/playerAttacks/tornado.tscn" id="3_jrhqw"]
+[ext_resource type="PackedScene" uid="uid://bvwdn0ymfscae" path="res://Scenes/tornado.tscn" id="3_jrhqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vscca"]
 radius = 699.10297

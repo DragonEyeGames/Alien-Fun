@@ -1,9 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjpwlfk6dl4ae"]
+[gd_scene load_steps=25 format=3 uid="uid://cjpwlfk6dl4ae"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_uuwk1"]
+[ext_resource type="Shader" uid="uid://cxb7nottno561" path="res://shaders/flash.gdshader" id="2_sebv8"]
 [ext_resource type="Texture2D" uid="uid://bgctqggfv5dim" path="res://Assets/Slime pack/Slime yellow.png" id="2_uuwk1"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="3_sebv8"]
 [ext_resource type="AudioStream" uid="uid://ck33bjywsmq8r" path="res://music/splat.mp3" id="4_lnj6c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lofc"]
+resource_local_to_scene = true
+shader = ExtResource("2_sebv8")
+shader_parameter/whiteness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lnj6c"]
 atlas = ExtResource("2_uuwk1")
@@ -113,6 +119,43 @@ radius = 43.56604
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 49.0408
 
+[sub_resource type="Animation" id="Animation_b7s2d"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whiteness")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_137p8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whiteness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2402"]
+_data = {
+&"RESET": SubResource("Animation_137p8"),
+&"hit": SubResource("Animation_b7s2d")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_uuwk1")
@@ -123,11 +166,12 @@ health = 154
 
 [node name="Icon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_4lofc")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_wf4ne")
 animation = &"walkSide"
 autoplay = "walkSide"
-frame_progress = 0.33291262
+frame_progress = 0.5805795
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jmwgi")
@@ -142,6 +186,11 @@ shape = SubResource("CircleShape2D_4gyqm")
 [node name="Splat" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_lnj6c")
 volume_db = -5.0
+
+[node name="Flash" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a2402")
+}
 
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]

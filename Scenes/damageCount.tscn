@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm4hn67marw6w"]
 
 [ext_resource type="FontFile" uid="uid://7we6om3e3y5a" path="res://Fonts/SpaceShards-RpExo.ttf" id="1_houni"]
-[ext_resource type="Script" uid="uid://b80xvatgb48sh" path="res://Scenes/damage_count.gd" id="2_lja8g"]
+[ext_resource type="Script" uid="uid://b80xvatgb48sh" path="res://Scripts/damage_count.gd" id="2_lja8g"]
 
 [sub_resource type="Animation" id="Animation_lja8g"]
 resource_name = "bye"

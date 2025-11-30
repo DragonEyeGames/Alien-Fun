@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://6bytdxoaf341"]
 
 [ext_resource type="Texture2D" uid="uid://dg6h7sgywvke" path="res://Assets/rotatingAttack/FX001.png" id="1_3cbwa"]
-[ext_resource type="Script" uid="uid://cmge72kt7adop" path="res://Scenes/playerAttacks/rotater.gd" id="1_60hxp"]
+[ext_resource type="Script" uid="uid://cmge72kt7adop" path="res://Scripts/rotater.gd" id="1_60hxp"]
 [ext_resource type="Texture2D" uid="uid://dwa5hy85g3x45" path="res://Assets/rotatingAttack/FX002.png" id="2_60hxp"]
 [ext_resource type="Texture2D" uid="uid://cgy0g7y1hm7sk" path="res://Assets/rotatingAttack/FX003.png" id="3_chxsq"]
 [ext_resource type="Texture2D" uid="uid://rc1sbks1g1n" path="res://Assets/rotatingAttack/FX004.png" id="4_3wwoa"]

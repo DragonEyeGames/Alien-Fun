@@ -41,6 +41,7 @@ func _physics_process(_delta: float) -> void:
 		move_and_slide()
 
 func hurt(newDamage):
+	$Flash.play("hit")
 	health-=newDamage
 	var counter = load("res://Scenes/damageCount.tscn").instantiate()
 	get_parent().add_child(counter)

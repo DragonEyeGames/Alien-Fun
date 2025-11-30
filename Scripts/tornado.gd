@@ -4,9 +4,15 @@ var damage=1
 var pulling=[]
 var hit=[]
 
+var timedOut=false
+var time:=0.0
+
 func _ready() -> void:
 	$Sound.pitch_scale+=randf_range(-.1, .1)
 	await get_tree().process_frame
+	if(target==null):
+		queue_free()
+		return
 	velocity=target.global_position-global_position
 	velocity=velocity.normalized()*300
 	velocity*=WeaponManager.items["tornado"]["stats"]["speed"]
@@ -16,11 +22,15 @@ func _ready() -> void:
 	await get_tree().create_timer(.1).timeout
 	queue_free()
 	
-func _physics_process(_delta: float) -> void:
-	for enemy in pulling:
-		var toMove=global_position-enemy.global_position
-		toMove=toMove.normalized()*8
-		enemy.global_position+=(toMove)
+func _physics_process(delta: float) -> void:
+	time+=delta
+	if(time>=0.5):
+		timedOut=true
+	if(timedOut):
+		for enemy in pulling:
+			var toMove=global_position-enemy.global_position
+			toMove=toMove.normalized()*8
+			enemy.global_position+=(toMove)
 	move_and_slide()
 
 

@@ -39,7 +39,8 @@ folder_colors={
 "res://Scenes/playerAttacks/": "red",
 "res://Scripts/": "pink",
 "res://addons/": "gray",
-"res://music/": "yellow"
+"res://music/": "yellow",
+"res://shaders/": "teal"
 }
 
 [input]

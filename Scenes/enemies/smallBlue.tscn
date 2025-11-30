@@ -1,9 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmqrntyx7ree4"]
+[gd_scene load_steps=27 format=3 uid="uid://dmqrntyx7ree4"]
 
 [ext_resource type="Script" uid="uid://ce3lyehgm1881" path="res://Scripts/enemy.gd" id="1_v0pps"]
 [ext_resource type="Texture2D" uid="uid://c66y7tt2aqex3" path="res://Assets/Slime pack/Tiny_Slime Red.png" id="2_6kxcu"]
 [ext_resource type="Texture2D" uid="uid://ckmg2tu7vndka" path="res://Assets/Slime pack/Tiny_Slime Blue.png" id="2_dshun"]
+[ext_resource type="Shader" uid="uid://cxb7nottno561" path="res://shaders/flash.gdshader" id="2_yd6uw"]
 [ext_resource type="AudioStream" uid="uid://ck33bjywsmq8r" path="res://music/splat.mp3" id="4_dshun"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7l3j"]
+resource_local_to_scene = true
+shader = ExtResource("2_yd6uw")
+shader_parameter/whiteness = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yd6uw"]
 atlas = ExtResource("2_dshun")
@@ -127,6 +133,43 @@ radius = 43.56604
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gyqm"]
 radius = 49.0408
 
+[sub_resource type="Animation" id="Animation_b7s2d"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whiteness")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_137p8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/whiteness")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2402"]
+_data = {
+&"RESET": SubResource("Animation_137p8"),
+&"hit": SubResource("Animation_b7s2d")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_v0pps")
@@ -135,6 +178,7 @@ health = 5
 
 [node name="Icon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_n7l3j")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_gs0y4")
 animation = &"walkSide"
@@ -153,6 +197,11 @@ shape = SubResource("CircleShape2D_4gyqm")
 [node name="Splat" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dshun")
 volume_db = -5.0
+
+[node name="Flash" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a2402")
+}
 
 [connection signal="animation_finished" from="Icon" to="." method="_on_icon_animation_finished"]
 [connection signal="area_entered" from="AttackZone" to="." method="_on_area_2d_body_entered"]
