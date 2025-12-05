@@ -5,6 +5,10 @@ var double=false
 var score = 0.0
 var killCount = 0.0
 
+var defaults = {
+	
+}
+
 var items = {
 	"fireball": {
 		"level": 0,
@@ -126,3 +130,11 @@ var items = {
 		}
 	},
 }
+
+func _ready() -> void:
+	print("REad")
+	defaults=items.duplicate(true)
+	
+func refresh():
+	print("fresh")
+	items=defaults.duplicate(true)
